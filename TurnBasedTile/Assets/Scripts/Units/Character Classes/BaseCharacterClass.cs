@@ -1,80 +1,80 @@
 ﻿
 using UnityEngine;
 
-public class BaseCharacterClass : MonoBehaviour
+public class BaseCharacterClass : ScriptableObject
 {
-    private string CharacterClassName;
-    private string CharacterClassDescription;
+    private string characterClassName;
+    private string characterClassDescription;
 
     // Stats
-    private characterStats Strength;
-    private characterStats Speed;
-    private characterStats Intellect;
-    private characterStats Health;
-    private characterStats Mana;
-    private characterStats Dexterity;
+    private characterStats strength;
+    private characterStats speed;
+    private characterStats intellect;
+    private characterStats health;
+    private characterStats mana;
+    private characterStats dexterity;
 
-    private characterStats Movement;
-    private characterStats JumpHeight;
+    private characterStats movement;
+    private characterStats jumpHeight;
 
 
     // can use get to read, or set to write value of names/stats
-    public string characterClassName
+    public string CharacterClassName
     {
-        get { return CharacterClassName; }
-        set { CharacterClassName = value; }
+        get { return characterClassName; }
+        set { characterClassName = value; }
     }
 
-    public string characterClassDescription
+    public string CharacterClassDescription
     {
-        get { return CharacterClassDescription; }
-        set { CharacterClassDescription = value; }
+        get { return characterClassDescription; }
+        set { characterClassDescription = value; }
     }
 
-    public characterStats strength
+    public characterStats Strength
     {
-        get { return Strength; }
-        set { Strength = value; }
+        get { return strength; }
+        set { strength = value; }
     }
 
-    public characterStats speed
+    public characterStats Speed
     {
-        get { return Speed; }
-        set { Speed = value; }
+        get { return speed; }
+        set { speed = value; }
     }
 
-    public characterStats intellect
+    public characterStats Intellect
     {
-        get { return Intellect; }
-        set { Intellect = value; }
+        get { return intellect; }
+        set { intellect = value; }
     }
 
-    public characterStats health
+    public characterStats Health
     {
-        get { return Health; }
-        set { Health = value; }
+        get { return health; }
+        set { health = value; }
     }
 
-    public characterStats mana
+    public characterStats Mana
     {
-        get { return Mana; }
-        set { Mana = value; }
+        get { return mana; }
+        set { mana = value; }
     }
 
-    public characterStats dexterity
+    public characterStats Dexterity
     {
-        get { return Dexterity; }
-        set { Dexterity = value; }
+        get { return dexterity; }
+        set { dexterity = value; }
     }
 
-    public characterStats movement
+    public characterStats Movement
     {
-        get { return Movement; }
-        set { Movement = value; }
+        get { return movement; }
+        set { movement = value; }
     }
-    public characterStats jumpHeight
+    public characterStats JumpHeight
     {
-        get { return JumpHeight; }
-        set { JumpHeight = value; }
+        get { return jumpHeight; }
+        set { jumpHeight = value; }
     }
 }

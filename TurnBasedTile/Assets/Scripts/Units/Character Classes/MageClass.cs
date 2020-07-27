@@ -1,15 +1,22 @@
-﻿
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Class/Mage")]
 public class MageClass : BaseCharacterClass
 {
-    public void mageClass()
+    public MageClass()
     {
-        characterClassName = "Mage";
-        characterClassDescription = "Smort boi";
-        strength = new characterStats(5);
-        speed = new characterStats(10);
-        intellect = new characterStats(20);
-        health = new characterStats(30);
-        mana = new characterStats(60);
-        dexterity = new characterStats(10);
+        CharacterClassName = "Mage";
+        CharacterClassDescription = "Smort boi";
+        Strength = new characterStats(5);
+        Speed = new characterStats(10);
+        Intellect = new characterStats(20);
+        Health = new characterStats(30);
+        Mana = new characterStats(60);
+        Dexterity = new characterStats(10);
+
+        Movement = new characterStats(3);
+        JumpHeight = new characterStats(1);
     }
 }

@@ -1,20 +1,24 @@
-﻿
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 // warrior class base stats and info
+[CreateAssetMenu(menuName = "Class/Warrior")]
 public class WarriorClass : BaseCharacterClass 
 {
-    public void warriorClass()
+    public WarriorClass()
     {
-        characterClassName = "Warrior";
-        characterClassDescription = "Stronk boi";
-        strength = new characterStats(20);
-        speed = new characterStats(10);
-        intellect = new characterStats(5);
-        health = new characterStats(50);
-        mana = new characterStats(20);
-        dexterity = new characterStats(10);
+        CharacterClassName = "Warrior";
+        CharacterClassDescription = "Stronk boi";
+        Strength = new characterStats(20);
+        Speed = new characterStats(10);
+        Intellect = new characterStats(5);
+        Health = new characterStats(50);
+        Mana = new characterStats(20);
+        Dexterity = new characterStats(10);
 
-        movement = new characterStats(4);
-        jumpHeight = new characterStats(2);
+        Movement = new characterStats(4);
+        JumpHeight = new characterStats(1);
 
     }
 }

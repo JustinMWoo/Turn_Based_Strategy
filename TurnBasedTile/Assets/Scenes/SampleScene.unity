@@ -4958,9 +4958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turn: 0
-  currAction: {fileID: 0}
-  move: 5
-  jumpHeight: 2
+  unitClass: {fileID: 11400000, guid: f17ba24c6eecf164ebde2e7bb0b85379, type: 2}
 --- !u!114 &506332852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10756,9 +10754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turn: 0
-  currAction: {fileID: 0}
-  move: 5
-  jumpHeight: 2
+  unitClass: {fileID: 11400000, guid: 57c91dfc554ba4449b4ff59191939c24, type: 2}
 --- !u!1 &1171031346
 GameObject:
   m_ObjectHideFlags: 0

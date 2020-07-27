@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,13 +7,13 @@ public class Unit : MonoBehaviour
 {
     public bool turn = false; // True when it is this units turn
     public Queue<UnitActions> actions = new Queue<UnitActions>();
+    [NonSerialized]
     public UnitActions currAction;
+
     public BaseCharacterClass unitClass;
 
 
     // Movement and jump height specified on classes
-    public int move;
-    public float jumpHeight;
 
 
     void Start()
