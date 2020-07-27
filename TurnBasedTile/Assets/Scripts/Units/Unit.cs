@@ -7,10 +7,12 @@ public class Unit : MonoBehaviour
     public bool turn = false; // True when it is this units turn
     public Queue<UnitActions> actions = new Queue<UnitActions>();
     public UnitActions currAction;
+    public BaseCharacterClass unitClass;
+
 
     // Movement and jump height specified on classes
-    public int move = 5;
-    public float jumpHeight = 2;
+    public int move;
+    public float jumpHeight;
 
 
     void Start()

@@ -67,11 +67,22 @@
     <Compile Include="Assets\Scripts\Actions\Movement\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Actions\Movement\TacticsMove.cs" />
     <Compile Include="Assets\Scripts\Actions\UnitActions.cs" />
+    <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Items, Weapons, Armor\Armor.cs" />
+    <Compile Include="Assets\Scripts\Items, Weapons, Armor\Item.cs" />
+    <Compile Include="Assets\Scripts\Items, Weapons, Armor\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Stats\characterStats.cs" />
+    <Compile Include="Assets\Scripts\Stats\statModifier.cs" />
     <Compile Include="Assets\Scripts\TacticsCamera.cs" />
     <Compile Include="Assets\Scripts\Tile.cs" />
     <Compile Include="Assets\Scripts\Tools\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Tools\MenuScript.cs" />
     <Compile Include="Assets\Scripts\TurnManager.cs" />
+    <Compile Include="Assets\Scripts\Units\Character Classes\ArcherClass.cs" />
+    <Compile Include="Assets\Scripts\Units\Character Classes\BaseCharacterClass.cs" />
+    <Compile Include="Assets\Scripts\Units\Character Classes\MageClass.cs" />
+    <Compile Include="Assets\Scripts\Units\Character Classes\ThiefClass.cs" />
+    <Compile Include="Assets\Scripts\Units\Character Classes\WarriorClass.cs" />
     <Compile Include="Assets\Scripts\Units\Unit.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -257,13 +268,13 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.5f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.5f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -611,46 +622,46 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Monetization">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Repos/Unity3D/TurnBasedTile/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Repos/Unity3D/Unity_Turn_Based_Strategy/TurnBasedTile/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
