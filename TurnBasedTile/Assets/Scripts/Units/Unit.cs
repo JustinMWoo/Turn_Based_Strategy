@@ -11,13 +11,17 @@ public class Unit : MonoBehaviour
     public UnitActions currAction;
 
     public BaseCharacterClass unitClass;
+    
 
+    public Inventory inventory;
+    
 
     // Movement and jump height specified on classes
 
 
     void Start()
     {
+
         UnitActions[] acts = GetComponents<UnitActions>();
         foreach (UnitActions action in acts)
         {
