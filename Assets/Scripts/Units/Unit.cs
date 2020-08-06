@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    #region Variables
+    // Save Info
+    public UnitData unitData;
+    public bool npc;
+    public int unitType;
+
     public bool turn = false; // True when it is this units turn
 
     //public Queue<UnitActions> actions = new Queue<UnitActions>();
@@ -12,10 +18,9 @@ public class Unit : MonoBehaviour
     public Queue<UnitActions> actions = new Queue<UnitActions>();
 
     public BaseCharacterClass unitClass;
-    
 
     public Inventory inventory;
-    
+
 
     // Movement and jump height specified on classes
 
@@ -29,18 +34,43 @@ public class Unit : MonoBehaviour
 
     public HealthBar healthbar;
 
+    #endregion
 
     void Start()
     {
+        if (npc)
+        {
+            gameObject.AddComponent<NPCMove>();
+            //gameObject.AddComponent<NPCAttack>();
+            gameObject.AddComponent<NPCFaceDir>();
+        }
+        else
+        {
+            gameObject.AddComponent<PlayerMove>();
+            gameObject.AddComponent<PlayerAttack>();
+            gameObject.AddComponent<PlayerFaceDir>();
+        }
+
+        // For save/load
+        if (string.IsNullOrEmpty(unitData.id))
+        {
+            unitData.id = transform.position.sqrMagnitude + name + transform.GetSiblingIndex();
+            SaveData.current.units.Add(unitData);
+            //Debug.Log("ID for " + name + " is " + unitData.id);
+        }
+        unitData.npc = npc;
+        unitData.unitType = unitType;
+        GameEvents.current.onLoadData += DestroyMe;
+
         // Add unit to turn order (static so dont need instance of turn manager)
         TurnManager.AddUnit(this);
-        
+
 
         // HP IN CLASSES SHOULD PROBABLY BE INT NOT FLOAT
-        currentHP = maxHP = (int) unitClass.Health.Value;
+        currentHP = maxHP = (int)unitClass.Health.Value;
         healthbar.SetMaxHealth(maxHP);
         healthbar.gameObject.SetActive(false);
-        
+
     }
 
     void Update()
@@ -55,6 +85,9 @@ public class Unit : MonoBehaviour
         {
             Die();
         }
+
+        unitData.position = transform.position;
+        unitData.rotation = transform.rotation;
     }
 
     public void BeginTurn()
@@ -98,5 +131,12 @@ public class Unit : MonoBehaviour
         // Remove unit
         Destroy(gameObject);
     }
+
+    void DestroyMe()
+    {
+        GameEvents.current.onLoadData -= DestroyMe;
+        Destroy(gameObject);
+    }
+
 }
 

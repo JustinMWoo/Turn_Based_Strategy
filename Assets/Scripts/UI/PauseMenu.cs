@@ -31,11 +31,22 @@ public class PauseMenu : MonoBehaviour
         AudioListener.pause = true;
         pauseMenuUI.SetActive(true);
     }
+
     public void DeactivateMenu()
     {
         Time.timeScale = 1;
         AudioListener.pause = false;
         pauseMenuUI.SetActive(false);
         isPaused = false;
+    }
+
+    public void Save()
+    {
+        GameEvents.current.SaveData();
+    }
+
+    public void Load()
+    {
+        GameEvents.current.LoadData();
     }
 }
