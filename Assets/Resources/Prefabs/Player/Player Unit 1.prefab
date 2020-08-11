@@ -319,12 +319,15 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     npc: 0
+    unitType: 0
   npc: 0
+  unitType: 0
   turn: 0
+  turnDone: 0
   unitClass: {fileID: 11400000, guid: f17ba24c6eecf164ebde2e7bb0b85379, type: 2}
   weaponRange: 5
   weaponVerticality: 1
-  weaponDamage: 50
+  weaponDamage: 10
   maxHP: 0
   currentHP: 0
   healthbar: {fileID: 4337116775855045787}
@@ -440,7 +443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4841c0271b9d547a627e965c26e732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &4337116777477782358
 GameObject:
   m_ObjectHideFlags: 0

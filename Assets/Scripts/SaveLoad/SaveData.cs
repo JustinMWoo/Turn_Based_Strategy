@@ -24,4 +24,5 @@ public class SaveData
     }
 
     public List<UnitData> units = new List<UnitData>();
+    public TurnData turn = new TurnData();
 }

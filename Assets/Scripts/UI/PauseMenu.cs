@@ -42,11 +42,20 @@ public class PauseMenu : MonoBehaviour
 
     public void Save()
     {
-        GameEvents.current.SaveData();
+        if (TurnManager.playerUnitTurnStart)
+        {
+            GameEvents.current.SaveInitialized();
+            Debug.Log("Saved");
+        }
     }
-
     public void Load()
     {
-        GameEvents.current.LoadData();
+        StartCoroutine(LoadCoroutine());
+    }
+
+    IEnumerator LoadCoroutine()
+    {
+        yield return StartCoroutine(GameEvents.current.LoadInitialized());
+        GameEvents.current.LoadTurns();
     }
 }

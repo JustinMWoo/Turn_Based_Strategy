@@ -16,6 +16,8 @@ public abstract class UnitActions : MonoBehaviour
 
     protected Unit unit;
 
+    protected bool waiting;
+
     public abstract void Execute();
     public abstract void Done();
 
@@ -75,5 +77,11 @@ public abstract class UnitActions : MonoBehaviour
     {
         velocity = heading * moveSpeed;
     }
-
+    protected IEnumerator WaitAndEndAction(float sec, bool done)
+    {
+        waiting = true;
+        yield return new WaitForSeconds(sec);
+        TurnManager.EndAction(done, true);
+        waiting = false;
+    }
 }

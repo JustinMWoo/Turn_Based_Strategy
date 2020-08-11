@@ -77,7 +77,7 @@ public class TacticsAttack : UnitActions
         // If there are no enemies in range
         if (attackableTiles.Count < 1)
         {
-            TurnManager.EndAction(attacked);
+            TurnManager.EndAction(attacked, false);
             Done();
         }
     }
@@ -202,7 +202,7 @@ public class TacticsAttack : UnitActions
                 attacked = true;
 
                 // End the action
-                TurnManager.EndAction(attacked);
+                TurnManager.EndAction(attacked, true);
                 Done();
             }
         }

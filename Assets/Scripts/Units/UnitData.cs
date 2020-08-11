@@ -22,4 +22,6 @@ public class UnitData
     public Quaternion rotation;
     public bool npc;
     public int unitType;
+
+    public int? health;
 }

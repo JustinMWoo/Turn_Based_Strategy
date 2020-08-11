@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check if game is unpaused
+        // Check mouse is over UI
         if (Time.timeScale != 0)
         {
             if (panTarget != null)

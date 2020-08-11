@@ -115,7 +115,7 @@ public class TacticsMove : UnitActions
         {
             // End the units move action
             Done();
-            TurnManager.EndAction(false);
+            TurnManager.EndAction(false, true);
         }
     }
 

@@ -3,9 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
+    static TurnData turnData = new TurnData();
+    public static bool playerUnitTurnStart;
+    static bool buttonPressed;
+
     // String = team, List = members of team;
     static Dictionary<string, List<Unit>> units = new Dictionary<string, List<Unit>>();
     // Key for whose turn it is
@@ -17,13 +22,15 @@ public class TurnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        SaveData.current.turn = turnData;
+        GameEvents.current.onLoadInitialized += OnLoadStart;
+        GameEvents.current.onLoadTurns += OnLoadTurns;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (turnTeam.Count == 0)
+        if (!GameEvents.current.Loading && turnTeam.Count == 0 && units.Count > 1)
         {
             InitTeamTurnQueue();
         }
@@ -31,12 +38,14 @@ public class TurnManager : MonoBehaviour
 
     static void InitTeamTurnQueue()
     {
+        // Debug.Log("Initializing team");
         // Get units from player whose turn it is
         List<Unit> teamList = units[turnKey.Peek()];
 
         foreach (Unit unit in teamList)
         {
             turnTeam.Enqueue(unit);
+            turnData.unitsLeft.Add(unit.unitData.id);
         }
         StartTurn();
     }
@@ -44,17 +53,29 @@ public class TurnManager : MonoBehaviour
     // Start the turn for the next unit in the queue;
     public static void StartTurn()
     {
+        turnData.turnKeyData = turnKey;
         if (turnTeam.Count > 0)
         {
+            //Debug.Log(turnTeam.Peek().unitData.id);
             turnTeam.Peek().BeginTurn();
             PanToTarget(turnTeam.Peek().transform);
+        }
 
-            // Debug.Log(turnTeam.Peek().actions.Count);
+        if (!turnTeam.Peek().npc)
+        {
+            playerUnitTurnStart = true;
+            //Debug.Log(turnStart);
         }
     }
 
-    public static void EndAction(bool done)
+    public static void EndAction(bool done, bool updatePlayerUnitTurnStart)
     {
+        // If cycling actions with button then dont change status of turn
+        if (updatePlayerUnitTurnStart)
+        {
+            playerUnitTurnStart = false;
+        }
+
         if (done)
         {
             EndTurn();
@@ -63,13 +84,17 @@ public class TurnManager : MonoBehaviour
         {
             turnTeam.Peek().actions.Dequeue();
         }
-        // Debug.Log(currAction);
     }
 
     public static void EndTurn()
     {
         Unit unit = turnTeam.Dequeue();
         unit.EndTurn();
+
+        // Remove the unit from the save data if it is not called from the button being pressed
+        if(!buttonPressed)
+            turnData.unitsLeft.Remove(unit.unitData.id);
+        //Debug.Log(turnData.unitsLeft.Count);
 
         if (turnTeam.Count > 0) // Start the next units turn
         {
@@ -80,6 +105,9 @@ public class TurnManager : MonoBehaviour
             //Debug.Log("Ending Team Turn");
             string team = turnKey.Dequeue();
             turnKey.Enqueue(team);
+            //Debug.Log("Ending " + team + " turn");
+            //Debug.Log("Starting " + turnKey.Peek() + " turn");
+
             InitTeamTurnQueue();
         }
     }
@@ -133,7 +161,7 @@ public class TurnManager : MonoBehaviour
             units.Remove(unit.tag);
         }
 
-        if(turnKey.Count < 2)
+        if (turnKey.Count < 2)
         {
             // Check win or lose
         }
@@ -148,9 +176,63 @@ public class TurnManager : MonoBehaviour
         turnTeam.Peek().actions.Enqueue(temp);
     }
 
+    // Allow player to cycle through available units
+    public static void NextUnit()
+    {
+        if (turnTeam.Count > 1)
+        {
+            buttonPressed = true;
+            // End the units turn but re-add them to the queue after
+            Unit temp = turnTeam.Peek();
+            EndAction(true, false);
+            turnTeam.Enqueue(temp);
+            Debug.Log(turnData.unitsLeft.Count);
+
+            buttonPressed = false;
+        }
+    }
+
     // Move this into CameraController?
     static void PanToTarget(Transform target)
     {
         CameraController.instance.panTarget = target;
     }
+
+    private void OnLoadStart()
+    {
+        turnData = SaveData.current.turn;
+
+        int count = turnData.turnKeyData.Count;
+        for (int i = 0; i < count; i++)
+        {
+            string key = turnData.turnKeyData.Dequeue();
+            turnKey.Enqueue(key);
+            turnData.turnKeyData.Enqueue(key);
+        }
+
+        turnTeam.Clear();
+    }
+    private void OnLoadTurns()
+    {
+        // Add the units that still had their turn available
+        Unit[] currUnits = FindObjectsOfType<Unit>();
+
+        // Debug.Log("# of units: " + currUnits.Length);
+        // Debug.Log(turnData.unitsLeft.Count);
+
+        // Maybe add a "continue;" here 
+        foreach (string unitID in turnData.unitsLeft)
+        {
+            foreach (Unit unit in currUnits)
+            {
+                if (unit.unitData.id.Equals(unitID))
+                {
+                    //Debug.Log("Adding Unit: " + unitID);
+                    turnTeam.Enqueue(unit);
+                }
+            }
+        }
+        StartTurn();
+    }
+
 }

@@ -11,22 +11,38 @@ public class GameEvents : MonoBehaviour
         current = this;
     }
 
-    public event Action onSaveData;
-    public void SaveData()
+    public event Action onSaveInitialized;
+    public void SaveInitialized()
     {
-        if (onSaveData != null)
+        if (onSaveInitialized != null)
         {
-           onSaveData.Invoke();
+            onSaveInitialized.Invoke();
         }
     }
 
-    public event Action onLoadData;
-    public void LoadData()
+    public event Action onLoadInitialized;
+    public bool Loading=false;
+
+    public IEnumerator LoadInitialized()
     {
-        if (onLoadData != null)
+        Loading = true;
+        SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/unitsave.save");
+        if (onLoadInitialized != null)
         {
-            onLoadData.Invoke();
+            onLoadInitialized.Invoke();
         }
+        yield return null;
+
+    }
+
+    public event Action onLoadTurns;
+    public void LoadTurns()
+    {
+        if (onLoadTurns != null)
+        {
+            onLoadTurns.Invoke();
+        }
+        Loading = false;
     }
 
 }

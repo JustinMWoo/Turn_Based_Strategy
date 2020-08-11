@@ -12,6 +12,7 @@ public class Unit : MonoBehaviour
     public int unitType;
 
     public bool turn = false; // True when it is this units turn
+    public bool turnDone = false;
 
     //public Queue<UnitActions> actions = new Queue<UnitActions>();
 
@@ -35,8 +36,7 @@ public class Unit : MonoBehaviour
     public HealthBar healthbar;
 
     #endregion
-
-    void Start()
+    private void Awake()
     {
         if (npc)
         {
@@ -50,7 +50,9 @@ public class Unit : MonoBehaviour
             gameObject.AddComponent<PlayerAttack>();
             gameObject.AddComponent<PlayerFaceDir>();
         }
-
+    }
+    void Start()
+    {
         // For save/load
         if (string.IsNullOrEmpty(unitData.id))
         {
@@ -60,17 +62,26 @@ public class Unit : MonoBehaviour
         }
         unitData.npc = npc;
         unitData.unitType = unitType;
-        GameEvents.current.onLoadData += DestroyMe;
+        GameEvents.current.onLoadInitialized += DestroyMe;
 
         // Add unit to turn order (static so dont need instance of turn manager)
         TurnManager.AddUnit(this);
 
+        // If unit has not taken damage when loading or when creating new unit
+        if ((unitData.health ?? 0) == 0)
+        {
+            // HP IN CLASSES SHOULD PROBABLY BE INT NOT FLOAT
+            currentHP =(int)unitClass.Health.Value;
+        }
+        else
+        {
+            currentHP = (int)unitData.health;
+        }
+        maxHP = (int)unitClass.Health.Value;
 
-        // HP IN CLASSES SHOULD PROBABLY BE INT NOT FLOAT
-        currentHP = maxHP = (int)unitClass.Health.Value;
         healthbar.SetMaxHealth(maxHP);
+        healthbar.SetHealth(currentHP);
         healthbar.gameObject.SetActive(false);
-
     }
 
     void Update()
@@ -81,6 +92,7 @@ public class Unit : MonoBehaviour
 
             actions.Peek().Execute();
         }
+
         if (currentHP <= 0)
         {
             Die();
@@ -93,6 +105,7 @@ public class Unit : MonoBehaviour
     public void BeginTurn()
     {
         turn = true;
+        //Debug.Log(unitData.id + " Turn " + turn);
 
         UnitActions move = GetComponent<TacticsMove>();
         UnitActions attack = GetComponent<TacticsAttack>();
@@ -119,12 +132,19 @@ public class Unit : MonoBehaviour
         currentHP -= damage;
 
         healthbar.SetHealth(currentHP);
+
+        // Update save hp
+        unitData.health = currentHP;
     }
 
+    // Same as DestroyMe but with death animation (maybe condense into just 1 function with an if statement
     public void Die()
     {
         // Death animation
 
+        GameEvents.current.onLoadInitialized -= DestroyMe;
+
+        SaveData.current.units.Remove(unitData);
         // Remove from turn order
         TurnManager.RemoveUnit(this);
 
@@ -134,9 +154,10 @@ public class Unit : MonoBehaviour
 
     void DestroyMe()
     {
-        GameEvents.current.onLoadData -= DestroyMe;
+        GameEvents.current.onLoadInitialized -= DestroyMe;
+        SaveData.current.units.Remove(unitData);
+        TurnManager.RemoveUnit(this);
         Destroy(gameObject);
     }
-
 }
 

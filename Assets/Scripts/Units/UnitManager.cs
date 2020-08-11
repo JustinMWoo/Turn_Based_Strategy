@@ -13,8 +13,8 @@ public class UnitManager : MonoBehaviour
         playerPrefabs = Resources.LoadAll<GameObject>("Prefabs/Player");
         //Debug.Log(npcTypes.Length);
 
-        GameEvents.current.onSaveData += OnSave;
-        GameEvents.current.onLoadData += OnLoad;
+        GameEvents.current.onSaveInitialized += OnSave;
+        GameEvents.current.onLoadInitialized += OnLoad;
     }
 
     public void OnSave()
@@ -24,9 +24,7 @@ public class UnitManager : MonoBehaviour
 
     public void OnLoad()
     {
-        SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/unitsave.save");
-
-        for (int i = 0; i < SaveData.current.units.Count; i++)
+       for (int i = 0; i < SaveData.current.units.Count; i++)
         {
             UnitData currentUnit = SaveData.current.units[i];
             if (currentUnit.npc)
