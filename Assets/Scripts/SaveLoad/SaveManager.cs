@@ -7,42 +7,56 @@ using UnityEngine.UI;
 
 public class SaveManager : MonoBehaviour
 {
-    //public TMP_InputField saveName;
-    //public void OnSave()
-    //{
-    //    SerializationManager.Save(saveName.text, SaveData.current);
-    //}
+    public TMP_InputField saveName;
+    public Transform loadArea;
+    public GameObject loadButtonPrefab;
 
-    //public string[] saveFiles;
-    //public void GetLoadFiles()
-    //{
-    //    if(!Directory.Exists(Application.persistentDataPath + "/saves/"))
-    //    {
-    //        Directory.CreateDirectory(Application.persistentDataPath + "/saves/");
-    //    }
+    public void OnSave()
+    {
+        if (saveName!=null) {
+            SerializationManager.Save(saveName.text, SaveData.current);
+            Debug.Log("Saved");
+        }
+    }
 
-    //    saveFiles = Directory.GetFiles(Application.persistentDataPath + "/saves/");
-    //}
+    public string[] saveFiles;
+    public void GetLoadFiles()
+    {
+        if (!Directory.Exists(Application.persistentDataPath + "/saves/"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/saves/");
+        }
 
-    //public void ShowLoadScreen()
-    //{
-    //    GetLoadFiles();
+        saveFiles = Directory.GetFiles(Application.persistentDataPath + "/saves/");
+    }
 
-    //    foreach(Transform button in loadArea)
-    //    {
-    //        Destroy(button.gameObject);
-    //    }
+    public void ShowLoadScreen()
+    {
+        GetLoadFiles();
 
-    //    for(int i = 0; i < saveFiles.Length; i++)
-    //    {
-    //        GameObject buttonObject = Instantiate(loadButtonPrefab);
-    //        buttonObject.transform.SetParent(loadArea.transform, false);
+        foreach (Transform button in loadArea)
+        {
+            Destroy(button.gameObject);
+        }
 
-    //        var index = i;
-    //        buttonObject.GetComponent<Button>().onClick.AddListener(() =>
-    //        {
-    //            UnitManager.
-    //        })
-    //    }
-    //}
+        for (int i = 0; i < saveFiles.Length; i++)
+        {
+            GameObject buttonObject = Instantiate(loadButtonPrefab);
+            buttonObject.transform.SetParent(loadArea.transform, false);
+
+            var index = i;
+            buttonObject.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                StartCoroutine(LoadCoroutine(saveFiles[index]));
+            });
+
+            buttonObject.GetComponentInChildren<TextMeshProUGUI>().text = saveFiles[index].Replace(Application.persistentDataPath + "/saves/", "");
+        }
+    }
+
+    IEnumerator LoadCoroutine(string saveName)
+    {
+        yield return StartCoroutine(GameEvents.current.LoadInitialized(saveName));
+        GameEvents.current.LoadTurns();
+    }
 }

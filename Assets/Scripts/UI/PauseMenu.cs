@@ -5,9 +5,18 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField]
-    private GameObject pauseMenuUI;
+    public GameObject pauseMenuUI;
+    [SerializeField]
+    public GameObject mainScreen;
+    [SerializeField]
+    public GameObject saveScreen;
+    [SerializeField]
+    public GameObject loadScreen;
 
     private bool isPaused = false;
+
+    // For setting the menu when starting a pause
+    private bool startPause = true;
 
     void Update()
     {
@@ -30,6 +39,14 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
         AudioListener.pause = true;
         pauseMenuUI.SetActive(true);
+
+        if (startPause)
+        {
+            mainScreen.SetActive(true);
+            saveScreen.SetActive(false);
+            loadScreen.SetActive(false);
+            startPause = false;
+        }
     }
 
     public void DeactivateMenu()
@@ -38,24 +55,31 @@ public class PauseMenu : MonoBehaviour
         AudioListener.pause = false;
         pauseMenuUI.SetActive(false);
         isPaused = false;
+        startPause = true;
     }
 
-    public void Save()
+    public void SaveMenu()
     {
         if (TurnManager.playerUnitTurnStart)
         {
-            GameEvents.current.SaveInitialized();
-            Debug.Log("Saved");
+            // Enable save menu
+            saveScreen.SetActive(true);
+            mainScreen.SetActive(false);
+
+            //GameEvents.current.SaveInitialized();
         }
     }
-    public void Load()
+
+    public void LoadMenu()
     {
-        StartCoroutine(LoadCoroutine());
+        loadScreen.SetActive(true);
+        mainScreen.SetActive(false);
     }
 
-    IEnumerator LoadCoroutine()
+    public void ReturnToMain()
     {
-        yield return StartCoroutine(GameEvents.current.LoadInitialized());
-        GameEvents.current.LoadTurns();
+        mainScreen.SetActive(true);
+        loadScreen.SetActive(false);
+        saveScreen.SetActive(false);
     }
 }

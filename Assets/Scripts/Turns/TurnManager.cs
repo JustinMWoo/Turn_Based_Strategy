@@ -186,7 +186,7 @@ public class TurnManager : MonoBehaviour
             Unit temp = turnTeam.Peek();
             EndAction(true, false);
             turnTeam.Enqueue(temp);
-            Debug.Log(turnData.unitsLeft.Count);
+            //Debug.Log(turnData.unitsLeft.Count);
 
             buttonPressed = false;
         }

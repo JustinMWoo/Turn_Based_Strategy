@@ -11,22 +11,22 @@ public class GameEvents : MonoBehaviour
         current = this;
     }
 
-    public event Action onSaveInitialized;
-    public void SaveInitialized()
-    {
-        if (onSaveInitialized != null)
-        {
-            onSaveInitialized.Invoke();
-        }
-    }
+    //public event Action onSaveInitialized;
+    //public void SaveInitialized()
+    //{
+    //    if (onSaveInitialized != null)
+    //    {
+    //        onSaveInitialized.Invoke();
+    //    }
+    //}
 
     public event Action onLoadInitialized;
     public bool Loading=false;
 
-    public IEnumerator LoadInitialized()
+    public IEnumerator LoadInitialized(string fileName)
     {
         Loading = true;
-        SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/unitsave.save");
+        SaveData.current = (SaveData)SerializationManager.Load(fileName);
         if (onLoadInitialized != null)
         {
             onLoadInitialized.Invoke();
