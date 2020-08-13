@@ -324,12 +324,13 @@ MonoBehaviour:
   unitType: 0
   turn: 0
   turnDone: 0
-  unitClass: {fileID: 11400000, guid: f17ba24c6eecf164ebde2e7bb0b85379, type: 2}
+  unitClass: {fileID: 11400000, guid: e48b2d5a48817c94593a3380315d7591, type: 2}
   weaponRange: 5
   weaponVerticality: 1
   weaponDamage: 10
   maxHP: 0
   currentHP: 0
+  level: 5
   healthbar: {fileID: 4337116775855045787}
 --- !u!1 &4337116777240164335
 GameObject:

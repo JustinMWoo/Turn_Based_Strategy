@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
@@ -12,15 +13,19 @@ public class Unit : MonoBehaviour
     public int unitType;
 
     public bool turn = false; // True when it is this units turn
-    public bool turnDone = false;
+    //public bool turnDone = false;
+    public bool usingAbility = false;
 
-    //public Queue<UnitActions> actions = new Queue<UnitActions>();
+    public List<TacticsAbility> AvailableAbilitites = new List<TacticsAbility>();
+    public TacticsAbility currentAbility;
 
     public Queue<UnitActions> actions = new Queue<UnitActions>();
 
     public BaseCharacterClass unitClass;
 
     public Inventory inventory;
+
+    public Dictionary<string, int> abilityCooldowns = new Dictionary<string, int>();
 
 
     // Movement and jump height specified on classes
@@ -32,6 +37,7 @@ public class Unit : MonoBehaviour
 
     public int maxHP;
     public int currentHP;
+    public int level;
 
     public HealthBar healthbar;
 
@@ -49,6 +55,11 @@ public class Unit : MonoBehaviour
             gameObject.AddComponent<PlayerMove>();
             gameObject.AddComponent<PlayerAttack>();
             gameObject.AddComponent<PlayerFaceDir>();
+
+            foreach (string ability in unitClass.AbilitiesPlayer)
+            {
+                AddAbility(ability);
+            }
         }
     }
     void Start()
@@ -62,7 +73,7 @@ public class Unit : MonoBehaviour
         }
         unitData.npc = npc;
         unitData.unitType = unitType;
-        GameEvents.current.onLoadInitialized += DestroyMe;
+        GameEvents.current.OnLoadInitialized += DestroyMe;
 
         // Add unit to turn order (static so dont need instance of turn manager)
         TurnManager.AddUnit(this);
@@ -71,13 +82,28 @@ public class Unit : MonoBehaviour
         if ((unitData.health ?? 0) == 0)
         {
             // HP IN CLASSES SHOULD PROBABLY BE INT NOT FLOAT
-            currentHP =(int)unitClass.Health.Value;
+            currentHP = (int)unitClass.Health.Value;
         }
         else
         {
             currentHP = (int)unitData.health;
         }
         maxHP = (int)unitClass.Health.Value;
+
+        // Create ability cooldown dictionary
+        if (unitData.abilityCooldowns == null)
+        {
+            TacticsAbility[] abilitites = GetComponents<TacticsAbility>();
+            foreach (TacticsAbility ability in abilitites)
+            {
+                abilityCooldowns.Add(ability.id, 0);
+            }
+        }
+        else
+        {
+            abilityCooldowns = unitData.abilityCooldowns;
+        }
+        unitData.abilityCooldowns = abilityCooldowns;
 
         healthbar.SetMaxHealth(maxHP);
         healthbar.SetHealth(currentHP);
@@ -86,7 +112,14 @@ public class Unit : MonoBehaviour
 
     void Update()
     {
-        if (turn)
+        if (turn && usingAbility)
+        {
+            if (abilityCooldowns[currentAbility.id] == 0)
+            {
+                currentAbility.Execute();
+            }
+        }
+        else if (turn)
         {
             //Debug.Log(TurnManager.GetCurrentAction());
 
@@ -119,12 +152,32 @@ public class Unit : MonoBehaviour
 
         if (faceDir != null)
             actions.Enqueue(faceDir);
+
+
+        // Initialize abilities
+        TacticsAbility[] abilities = GetComponents<TacticsAbility>();
+
+        foreach (TacticsAbility ability in abilities)
+        {
+            // Check for cooldown here too or on the ability itself (so ability still gets put on list but it shows that its on cooldown)
+            // Only add class abilities if the unit can access
+            if (ability.levelRequirement <= level)
+            {
+                AvailableAbilitites.Add(ability);
+            }
+        }
+        if (AvailableAbilitites.Count > 0)
+        {
+            currentAbility = AvailableAbilitites[0];
+        }
     }
 
     public void EndTurn()
     {
         turn = false;
         actions.Clear();
+        AvailableAbilitites.Clear();
+        currentAbility = null;
     }
 
     public void TakeDamage(int damage)
@@ -137,12 +190,39 @@ public class Unit : MonoBehaviour
         unitData.health = currentHP;
     }
 
+    public void ReduceCooldowns()
+    {
+        // Debug.Log("Reducing cooldowns");
+        foreach (string ability in abilityCooldowns.Keys.ToList())
+        {
+            if (abilityCooldowns[ability] != 0)
+            {
+                abilityCooldowns[ability]--;
+            }
+        }
+    }
+
+    void AddAbility(string id)
+    {
+        string tag;
+        if (npc)
+        {
+            tag = "NPC";
+        }
+        else
+        {
+            tag = "Player";
+        }
+        
+        gameObject.AddComponent(Type.GetType(tag + id));
+    }
+
     // Same as DestroyMe but with death animation (maybe condense into just 1 function with an if statement
     public void Die()
     {
         // Death animation
 
-        GameEvents.current.onLoadInitialized -= DestroyMe;
+        GameEvents.current.OnLoadInitialized -= DestroyMe;
 
         SaveData.current.units.Remove(unitData);
         // Remove from turn order
@@ -154,7 +234,7 @@ public class Unit : MonoBehaviour
 
     void DestroyMe()
     {
-        GameEvents.current.onLoadInitialized -= DestroyMe;
+        GameEvents.current.OnLoadInitialized -= DestroyMe;
         SaveData.current.units.Remove(unitData);
         TurnManager.RemoveUnit(this);
         Destroy(gameObject);

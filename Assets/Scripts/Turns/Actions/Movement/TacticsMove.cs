@@ -26,7 +26,7 @@ public class TacticsMove : UnitActions
     // BFS for selectable tiles
     public void FindSelectableTiles()
     {
-        ComputeAdjacencyLists(unit.unitClass.JumpHeight.Value, null, false);
+        ComputeAdjacencyLists(unit.unitClass.JumpHeight.Value, null, false, false);
         GetCurrentTile();
 
         Queue<Tile> queue = new Queue<Tile>();
@@ -129,7 +129,7 @@ public class TacticsMove : UnitActions
 
         foreach (Tile tile in selectableTiles)
         {
-            tile.Reset();
+            tile.Reset(false);
         }
 
         selectableTiles.Clear();
@@ -241,7 +241,7 @@ public class TacticsMove : UnitActions
     // Use A* to find a path
     protected void FindPath(Tile target)
     {
-        ComputeAdjacencyLists(unit.unitClass.JumpHeight.Value, target, false);
+        ComputeAdjacencyLists(unit.unitClass.JumpHeight.Value, target, false, false);
         GetCurrentTile();
 
         // When target tile is added to closed list the best path is found

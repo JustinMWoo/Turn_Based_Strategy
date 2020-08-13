@@ -20,29 +20,47 @@ public class GameEvents : MonoBehaviour
     //    }
     //}
 
-    public event Action onLoadInitialized;
+    public event Action OnLoadInitialized;
     public bool Loading=false;
 
     public IEnumerator LoadInitialized(string fileName)
     {
         Loading = true;
         SaveData.current = (SaveData)SerializationManager.Load(fileName);
-        if (onLoadInitialized != null)
+        if (OnLoadInitialized != null)
         {
-            onLoadInitialized.Invoke();
+            OnLoadInitialized.Invoke();
         }
         yield return null;
 
     }
 
-    public event Action onLoadTurns;
+    public event Action OnLoadTurns;
     public void LoadTurns()
     {
-        if (onLoadTurns != null)
+        if (OnLoadTurns != null)
         {
-            onLoadTurns.Invoke();
+            OnLoadTurns.Invoke();
         }
         Loading = false;
+    }
+
+    public event Action OnEndUnitTurn;
+    public void EndUnitTurn()
+    {
+        if (OnEndUnitTurn != null)
+        {
+            OnEndUnitTurn.Invoke();
+        }
+    }
+
+    public event Action OnEndTeamTurn;
+    public void EndTeamTurn()
+    {
+        if (OnEndTeamTurn != null)
+        {
+            OnEndTeamTurn.Invoke();
+        }
     }
 
 }

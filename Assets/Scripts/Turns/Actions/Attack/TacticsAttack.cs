@@ -28,7 +28,7 @@ public class TacticsAttack : UnitActions
     {
         RaycastHit hit;
         // REPLACE WITH VERTICALITY ATTACK VALUE
-        ComputeAdjacencyLists(unit.weaponVerticality, null, true);
+        ComputeAdjacencyLists(unit.weaponVerticality, null, true, false);
         GetCurrentTile();
 
         Queue<Tile> queue = new Queue<Tile>();
@@ -92,7 +92,7 @@ public class TacticsAttack : UnitActions
 
         foreach (Tile tile in processedTiles)
         {
-            tile.Reset();
+            tile.Reset(false);
         }
 
         attackableTiles.Clear();

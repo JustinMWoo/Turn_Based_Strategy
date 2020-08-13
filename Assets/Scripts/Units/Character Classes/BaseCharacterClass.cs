@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseCharacterClass : ScriptableObject
@@ -16,6 +17,9 @@ public class BaseCharacterClass : ScriptableObject
 
     private characterStats movement;
     private characterStats jumpHeight;
+
+    private List<string> abilitiesPlayer;
+    private List<string> abilitiesNPC;
 
 
     // can use get to read, or set to write value of names/stats
@@ -76,5 +80,15 @@ public class BaseCharacterClass : ScriptableObject
     {
         get { return jumpHeight; }
         set { jumpHeight = value; }
+    }
+    public List<string> AbilitiesPlayer
+    {
+        get { return abilitiesPlayer; }
+        set { abilitiesPlayer = value; }
+    }
+    public List<string> AbilitiesNPC
+    {
+        get { return abilitiesNPC; }
+        set { abilitiesNPC = value; }
     }
 }

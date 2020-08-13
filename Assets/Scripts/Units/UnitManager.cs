@@ -14,7 +14,7 @@ public class UnitManager : MonoBehaviour
         //Debug.Log(npcTypes.Length);
 
         //GameEvents.current.onSaveInitialized += OnSave;
-        GameEvents.current.onLoadInitialized += OnLoad;
+        GameEvents.current.OnLoadInitialized += OnLoad;
     }
 
     //public void OnSave()

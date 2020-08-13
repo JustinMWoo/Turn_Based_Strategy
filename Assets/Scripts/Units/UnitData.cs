@@ -23,5 +23,7 @@ public class UnitData
     public bool npc;
     public int unitType;
 
+    public Dictionary<string, int> abilityCooldowns;
+
     public int? health;
 }

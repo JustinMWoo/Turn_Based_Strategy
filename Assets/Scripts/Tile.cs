@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour
     // Where you can move to
     public bool selectable = false;
     public bool attackRange = false;
+    public bool AOE = false;
 
     public List<Tile> adjacencyList = new List<Tile>();
 
@@ -45,6 +46,10 @@ public class Tile : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.green;
         }
+        else if (AOE)
+        {
+            GetComponent<Renderer>().material.color = Color.yellow;
+        }
         else if (selectable)
         {
             GetComponent<Renderer>().material.color = Color.red;
@@ -59,14 +64,18 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void Reset()
+    public void Reset(bool aoe)
     {
         adjacencyList.Clear();
 
         current = false;
         target = false;
-        selectable = false;
         attackRange = false;
+        if (!aoe)
+        {
+            selectable = false;
+            AOE = false;
+        }
 
         visited = false;
         parent = null;
@@ -75,9 +84,11 @@ public class Tile : MonoBehaviour
         f = g = h = 0;
     }
 
-    public void FindNeighbors(float jumpHeight, Tile target, bool attack)
+    public void FindNeighbors(float jumpHeight, Tile target, bool attack, bool aoe)
     {
-        Reset();
+
+        Reset(aoe);
+
 
         CheckTile(Vector3.forward, jumpHeight, target, attack);
         CheckTile(-Vector3.forward, jumpHeight, target, attack);

@@ -18,5 +18,10 @@ public class MageClass : BaseCharacterClass
 
         Movement = new characterStats(3);
         JumpHeight = new characterStats(1);
+
+        AbilitiesPlayer = new List<string>()
+        {
+            "Fireball"
+        };
     }
 }

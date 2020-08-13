@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,9 @@ public abstract class UnitActions : MonoBehaviour
     protected Unit unit;
 
     protected bool waiting;
+
+    [NonSerialized]
+    public int levelRequirement;
 
     public abstract void Execute();
     public abstract void Done();
@@ -51,7 +55,7 @@ public abstract class UnitActions : MonoBehaviour
         return tile;
     }
 
-    public void ComputeAdjacencyLists(float jumpHeight, Tile target, bool attack)
+    public void ComputeAdjacencyLists(float jumpHeight, Tile target, bool attack, bool reset)
     {
         // Move this into here if tiles are going to be added or removed during gameplay
         // tiles = GameObject.FindGameObjectsWithTag("Tile");
@@ -61,7 +65,7 @@ public abstract class UnitActions : MonoBehaviour
             // Get tile script from the game object
             Tile t = tile.GetComponent<Tile>();
 
-            t.FindNeighbors(jumpHeight, target, attack);
+            t.FindNeighbors(jumpHeight, target, attack, reset);
         }
     }
 
