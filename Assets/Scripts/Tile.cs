@@ -37,12 +37,8 @@ public class Tile : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (current)
-        {
-            GetComponent<Renderer>().material.color = Color.magenta;
-        }
-        else if (target)
+    {   
+         if (target)
         {
             GetComponent<Renderer>().material.color = Color.green;
         }
@@ -50,13 +46,17 @@ public class Tile : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.yellow;
         }
+         else if (current)
+        {
+            GetComponent<Renderer>().material.color = Color.magenta;
+        }
         else if (selectable)
         {
             GetComponent<Renderer>().material.color = Color.red;
         }
         else if (attackRange)
         {
-            GetComponent<Renderer>().material.color = new Color (1.0f,0.67f,0.67f);
+            GetComponent<Renderer>().material.color = new Color(1.0f, 0.67f, 0.67f);
         }
         else
         {
@@ -64,15 +64,16 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void Reset(bool aoe)
+    public void Reset(bool ability)
     {
         adjacencyList.Clear();
-
-        current = false;
+        
         target = false;
-        attackRange = false;
-        if (!aoe)
+        
+        if (!ability)
         {
+            current = false;
+            attackRange = false;
             selectable = false;
             AOE = false;
         }
@@ -84,10 +85,10 @@ public class Tile : MonoBehaviour
         f = g = h = 0;
     }
 
-    public void FindNeighbors(float jumpHeight, Tile target, bool attack, bool aoe)
+    public void FindNeighbors(float jumpHeight, Tile target, bool attack, bool ability)
     {
 
-        Reset(aoe);
+        Reset(ability);
 
 
         CheckTile(Vector3.forward, jumpHeight, target, attack);

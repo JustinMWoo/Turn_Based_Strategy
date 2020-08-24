@@ -10,11 +10,19 @@ public class AbilityManager : MonoBehaviour
     // and set current skill on unit to the one selected
 
     public Transform abilityArea;
+
     public GameObject abilityPanel;
     public GameObject abilityButtonPrefab;
     public GameObject cooldownPrefab;
 
-    bool abilityPanelActive = false;
+    public  bool abilityPanelActive = false;
+
+    public static AbilityManager current;
+    private void Awake()
+    {
+        current = this;
+    }
+
     private void Start()
     {
         GameEvents.current.OnEndUnitTurn+=DeactivateAbilityPanel;
@@ -51,7 +59,7 @@ public class AbilityManager : MonoBehaviour
                     });
 
                     // Change button text
-                    buttonObject.GetComponentInChildren<TextMeshProUGUI>().text = currentUnit.currentAbility.id;
+                    buttonObject.GetComponentInChildren<TextMeshProUGUI>().text = currentUnit.AvailableAbilitites[index].id;
 
                     // Greyout button if on cooldown
                     if (currentUnit.abilityCooldowns[currentUnit.AvailableAbilitites[index].id] != 0){

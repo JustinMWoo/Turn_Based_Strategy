@@ -213,7 +213,7 @@ public class Unit : MonoBehaviour
         {
             tag = "Player";
         }
-        
+        //Debug.Log("Adding Ability: " + tag + id);
         gameObject.AddComponent(Type.GetType(tag + id));
     }
 

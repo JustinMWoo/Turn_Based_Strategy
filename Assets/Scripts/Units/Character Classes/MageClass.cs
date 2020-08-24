@@ -21,7 +21,8 @@ public class MageClass : BaseCharacterClass
 
         AbilitiesPlayer = new List<string>()
         {
-            "Fireball"
+            "Fireball",
+            "ChainLightning"
         };
     }
 }

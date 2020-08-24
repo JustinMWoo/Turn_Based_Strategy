@@ -323,7 +323,9 @@ MonoBehaviour:
   npc: 0
   unitType: 0
   turn: 0
-  turnDone: 0
+  usingAbility: 0
+  AvailableAbilitites: []
+  currentAbility: {fileID: 0}
   unitClass: {fileID: 11400000, guid: e48b2d5a48817c94593a3380315d7591, type: 2}
   weaponRange: 5
   weaponVerticality: 1

@@ -48,6 +48,7 @@ public class SaveManager : MonoBehaviour
             buttonObject.GetComponent<Button>().onClick.AddListener(() =>
             {
                 StartCoroutine(LoadCoroutine(saveFiles[index]));
+                AbilityManager.current.DeactivateAbilityPanel();
             });
 
             buttonObject.GetComponentInChildren<TextMeshProUGUI>().text = saveFiles[index].Replace(Application.persistentDataPath + "/saves/", "");

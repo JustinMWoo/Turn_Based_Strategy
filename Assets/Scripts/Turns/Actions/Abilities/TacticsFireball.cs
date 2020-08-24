@@ -101,10 +101,10 @@ public class TacticsFireball : TacticsAbility
            // Check for units on tiles
            if(Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1))
             {
-                Unit unit = hit.collider.GetComponent<Unit>();
-                if (unit != null)
+                Unit targetUnit = hit.collider.GetComponent<Unit>();
+                if (targetUnit != null)
                 {
-                    unit.TakeDamage(damage);
+                    targetUnit.TakeDamage(damage);
                 }
             }
         }
@@ -118,6 +118,7 @@ public class TacticsFireball : TacticsAbility
         {
             currentTile.current = false;
             currentTile = null;
+            targetTile = null;
         }
 
         foreach (Tile tile in selectableTiles)
@@ -138,10 +139,5 @@ public class TacticsFireball : TacticsAbility
     {
         RemoveSelectableAndAOETiles();
         attacking = false;
-    }
-
-    public override void Execute()
-    {
-        
     }
 }

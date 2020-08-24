@@ -16288,6 +16288,7 @@ MonoBehaviour:
     type: 3}
   cooldownPrefab: {fileID: 6553578464127923924, guid: 1edbc3840f7eedb4cb7a71fd4793bc05,
     type: 3}
+  abilityPanelActive: 0
 --- !u!1 &1509627592
 GameObject:
   m_ObjectHideFlags: 0
@@ -18378,7 +18379,7 @@ GameObject:
   - component: {fileID: 1697726597}
   - component: {fileID: 1697726596}
   m_Layer: 5
-  m_Name: AbilityList
+  m_Name: AbilityPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
