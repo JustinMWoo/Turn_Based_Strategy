@@ -8,15 +8,14 @@ public class BaseCharacterClass : ScriptableObject
     private string characterClassDescription;
 
     // Stats
-    private CharacterStats strength;
-    private CharacterStats speed;
-    private CharacterStats intellect;
-    private CharacterStats health;
-    private CharacterStats mana;
-    private CharacterStats dexterity;
+    private StatModifier strength;
+    private StatModifier intellect;
+    private StatModifier health;
+    private StatModifier mana;
+    private StatModifier dexterity;
 
-    private CharacterStats movement;
-    private CharacterStats jumpHeight;
+    private StatModifier movement;
+    private StatModifier jumpHeight;
 
 
     // can use get to read, or set to write value of names/stats
@@ -32,48 +31,42 @@ public class BaseCharacterClass : ScriptableObject
         set { characterClassDescription = value; }
     }
 
-    public CharacterStats Strength
+    public StatModifier Strength
     {
         get { return strength; }
         set { strength = value; }
     }
 
-    public CharacterStats Speed
-    {
-        get { return speed; }
-        set { speed = value; }
-    }
-
-    public CharacterStats Intellect
+    public StatModifier Intellect
     {
         get { return intellect; }
         set { intellect = value; }
     }
 
-    public CharacterStats Health
+    public StatModifier Health
     {
         get { return health; }
         set { health = value; }
     }
 
-    public CharacterStats Mana
+    public StatModifier Mana
     {
         get { return mana; }
         set { mana = value; }
     }
 
-    public CharacterStats Dexterity
+    public StatModifier Dexterity
     {
         get { return dexterity; }
         set { dexterity = value; }
     }
 
-    public CharacterStats Movement
+    public StatModifier Movement
     {
         get { return movement; }
         set { movement = value; }
     }
-    public CharacterStats JumpHeight
+    public StatModifier JumpHeight
     {
         get { return jumpHeight; }
         set { jumpHeight = value; }

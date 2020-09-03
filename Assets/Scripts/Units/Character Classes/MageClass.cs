@@ -8,14 +8,13 @@ public class MageClass : BaseCharacterClass
     {
         CharacterClassName = "Mage";
         CharacterClassDescription = "Smort boi";
-        Strength = new CharacterStats(5);
-        Speed = new CharacterStats(10);
-        Intellect = new CharacterStats(20);
-        Health = new CharacterStats(30);
-        Mana = new CharacterStats(60);
-        Dexterity = new CharacterStats(10);
+        Strength = new StatModifier(5, this);
+        Intellect = new StatModifier(20, this);
+        Health = new StatModifier(30, this);
+        Mana = new StatModifier(60, this);
+        Dexterity = new StatModifier(10, this);
 
-        Movement = new CharacterStats(3);
-        JumpHeight = new CharacterStats(1);
+        Movement = new StatModifier(3, this);
+        JumpHeight = new StatModifier(1, this);
     }
 }

@@ -8,14 +8,13 @@ public class ThiefClass : BaseCharacterClass
     {
         CharacterClassName = "Thief";
         CharacterClassDescription = "Sneaky boi";
-        Strength = new CharacterStats(20);
-        Speed = new CharacterStats(10);
-        Intellect = new CharacterStats(5);
-        Health = new CharacterStats(50);
-        Mana = new CharacterStats(20);
-        Dexterity = new CharacterStats(10);
+        Strength = new StatModifier(20, this);
+        Intellect = new StatModifier(5, this);
+        Health = new StatModifier(50, this);
+        Mana = new StatModifier(20, this);
+        Dexterity = new StatModifier(10, this);
 
-        Movement = new CharacterStats(5);
-        JumpHeight = new CharacterStats(3);
+        Movement = new StatModifier(5, this);
+        JumpHeight = new StatModifier(3, this);
     }
 }

@@ -9,15 +9,14 @@ public class WarriorClass : BaseCharacterClass
     {
         CharacterClassName = "Warrior";
         CharacterClassDescription = "Stronk boi";
-        Strength = new CharacterStats(20);
-        Speed = new CharacterStats(10);
-        Intellect = new CharacterStats(5);
-        Health = new CharacterStats(50);
-        Mana = new CharacterStats(20);
-        Dexterity = new CharacterStats(10);
+        Strength = new StatModifier(30, this);
+        Intellect = new StatModifier(5, this);
+        Health = new StatModifier(80, this);
+        Mana = new StatModifier(20, this);
+        Dexterity = new StatModifier(5, this);
 
-        Movement = new CharacterStats(4);
-        JumpHeight = new CharacterStats(1);
+        Movement = new StatModifier(4, this);
+        JumpHeight = new StatModifier(1, this);
 
     }
 }

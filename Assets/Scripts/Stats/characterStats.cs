@@ -39,7 +39,6 @@ namespace Stats.CharacterStats
         {
             isDirty = true;
             statModifiers.Add(mod);
-            statModifiers.Sort(compareModifierOrder);   // sorts modifiers by the Order parameter
         }
 
         // removes a stat modifier from the list
@@ -75,34 +74,13 @@ namespace Stats.CharacterStats
         protected virtual float calculateFinalValue()
         {
             float finalValue = BaseValue;   // final value starts as atleast the base value
-            float sumPercentAdd = 0;
 
             // adds each statModifier value to the final value (initially just the base value)
-            // handles percentage modifiers differently than flat modifiers
+            
             for (int i = 0; i < statModifiers.Count; i++)
             {
                 StatModifier mod = statModifiers[i];
-
-                if (mod.Type == StatModType.Flat)
-                {
                     finalValue += mod.Value;
-                }
-
-                else if (mod.Type == StatModType.PercentAdd)
-                {
-                    sumPercentAdd += mod.Value;     // add percent to value
-
-                    if (i + 1 >= statModifiers.Count || statModifiers[i + 1].Type != StatModType.PercentAdd)    // if the next mod in list is not of type percentAdd or we reach the end of the list
-                    {
-                        finalValue *= 1 + sumPercentAdd;
-                        sumPercentAdd = 0;
-                    }
-                }
-
-                else if (mod.Type == StatModType.PercentMult)
-                {
-                    finalValue *= 1 + mod.Value; // percent values are represented as decimals.
-                }
             }
 
             // round the final value to 4 decimal places
@@ -123,18 +101,5 @@ namespace Stats.CharacterStats
                 return _value;
             }
         }
-
-        // helper method to sort modifiers by the Order parameter
-        protected virtual int compareModifierOrder(StatModifier a, StatModifier b)
-        {
-            if (a.Order < b.Order)
-                return -1;
-
-            else if (a.Order > b.Order)
-                return 1;
-
-            return 0; // if a.Order == b.Order
-        }
-
     }
 }
