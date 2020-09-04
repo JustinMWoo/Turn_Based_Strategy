@@ -85,19 +85,19 @@ public class Tile : MonoBehaviour
         f = g = h = 0;
     }
 
-    public void FindNeighbors(float jumpHeight, Tile target, bool attack, bool ability)
+    public void FindNeighbors(float jumpHeight, Tile target, bool tilesWithObjectOnTop, bool ability)
     {
 
         Reset(ability);
 
 
-        CheckTile(Vector3.forward, jumpHeight, target, attack);
-        CheckTile(-Vector3.forward, jumpHeight, target, attack);
-        CheckTile(Vector3.right, jumpHeight, target, attack);
-        CheckTile(-Vector3.right, jumpHeight, target, attack);
+        CheckTile(Vector3.forward, jumpHeight, target, tilesWithObjectOnTop);
+        CheckTile(-Vector3.forward, jumpHeight, target, tilesWithObjectOnTop);
+        CheckTile(Vector3.right, jumpHeight, target, tilesWithObjectOnTop);
+        CheckTile(-Vector3.right, jumpHeight, target, tilesWithObjectOnTop);
     }
 
-    public void CheckTile(Vector3 direction, float jumpHeight, Tile target, bool attack)
+    public void CheckTile(Vector3 direction, float jumpHeight, Tile target, bool tilesWithObjectOnTop)
     {
         // Check at approx half the size of one tile
         Vector3 halfExtents = new Vector3(0.25f, jumpHeight, 0.25f);
@@ -112,7 +112,7 @@ public class Tile : MonoBehaviour
                 RaycastHit hit;
 
                 // Check if there is an object above the tile (such as a unit or obstacle)
-                if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) || (tile == target) || attack)
+                if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) || (tile == target) || tilesWithObjectOnTop)
                 {
                     adjacencyList.Add(tile);
                 }

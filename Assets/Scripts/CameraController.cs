@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
+using UnityEditor.Experimental.GraphView;
 
 public class CameraController : MonoBehaviour
 {
     #region Variables
     // Singleton reference
     public static CameraController instance;
-    public Transform panTarget;
+    public Vector3 panTarget;
     public Vector3 targetFixed;
     public Transform cameraTransform;
 
@@ -31,20 +32,33 @@ public class CameraController : MonoBehaviour
     public Vector3 cameraReturnPosition;
     public Quaternion cameraReturnRotation;
 
+    public bool panning;
     public bool attackCameraActive;
+    float distanceToBattle;
+    Vector3[] obstructionCheckDirections;
     public bool defocusing;
     public Vector3 battleMidpoint;
     public Vector3 attackPosition;
     public bool doneBattle = false;
+
+    private Vector3 controllerResetPosition;
+    private Quaternion controllerResetRotation;
+    private Vector3 cameraResetPosition;
+    private Quaternion cameraResetRotation;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-        newPosition = transform.position;
-        newRotation = transform.rotation;
+        newPosition = controllerResetPosition= transform.position;
+        newRotation = controllerResetRotation = transform.rotation;
         newZoom = cameraTransform.localPosition;
+
+        cameraResetPosition = cameraTransform.position;
+        cameraResetRotation = cameraTransform.rotation;
+
+        GameEvents.current.OnLoadInitialized += ResetCameraPosition;
     }
 
     // Update is called once per frame
@@ -53,7 +67,7 @@ public class CameraController : MonoBehaviour
         // Check mouse is over UI
         if (Time.timeScale != 0)
         {
-            if (panTarget != null)
+            if (panning)
             {
                 PanToTarget();
             }
@@ -71,9 +85,9 @@ public class CameraController : MonoBehaviour
                 HandleMovementInput();
             }
 
-            if (panTarget != null && Vector3.Distance(transform.position, targetFixed) <= 0.05f)
+            if (panning && Vector3.Distance(transform.position, targetFixed) <= 0.05f)
             {
-                panTarget = null;
+                panning = false;
             }
 
             // Camera has returned to original position
@@ -144,11 +158,16 @@ public class CameraController : MonoBehaviour
         }
         #endregion
     }
+    public void SetPanTarget(Vector3 Target)
+    {
+        panning = true;
+        panTarget = Target;
+    }
 
-    public void PanToTarget()
+    void PanToTarget()
     {
         // Remove the y value from the target
-        targetFixed = new Vector3(panTarget.position.x, transform.position.y, panTarget.position.z);
+        targetFixed = new Vector3(panTarget.x, transform.position.y, panTarget.z);
 
         transform.position = Vector3.Lerp(transform.position, targetFixed, Time.deltaTime * movementTime);
         newPosition = transform.position;
@@ -169,14 +188,14 @@ public class CameraController : MonoBehaviour
         // Debug.Log(Vector3.Cross(dir, Vector3.up).normalized);
 
         // Use distance to set the zoom amount
-        float distance = Vector3.Distance(unit1, unit2);
+        distanceToBattle = Vector3.Distance(unit1, unit2);
 
         // Set distance if too low to see health bars
-        if (distance < 3)
-            distance = 3;
+        if (distanceToBattle < 3)
+            distanceToBattle = 3;
 
-        Vector3 attackPosition1 = Vector3.Cross(dir, Vector3.up).normalized * distance + battleMidpoint;
-        Vector3 attackPosition2 = -Vector3.Cross(dir, Vector3.up).normalized * distance + battleMidpoint;
+        Vector3 attackPosition1 = Vector3.Cross(dir, Vector3.up).normalized * distanceToBattle + battleMidpoint;
+        Vector3 attackPosition2 = -Vector3.Cross(dir, Vector3.up).normalized * distanceToBattle + battleMidpoint;
 
         // Move camera to closer side
         if (Vector3.Distance(attackPosition1, cameraTransform.position) < Vector3.Distance(attackPosition2, cameraTransform.position))
@@ -187,6 +206,10 @@ public class CameraController : MonoBehaviour
         {
             attackPosition = attackPosition2;
         }
+
+        // Add the directions to check for obstructions
+        // Currently has the vector forward from the camera and towards the two units in combat
+        obstructionCheckDirections = new Vector3[] { -unit1, -unit2, cameraTransform.forward };
     }
 
     void FocusCamera()
@@ -196,6 +219,10 @@ public class CameraController : MonoBehaviour
         cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, targetRotation, Time.deltaTime * movementTime);
 
         cameraTransform.position = Vector3.Lerp(cameraTransform.position, attackPosition, Time.deltaTime * movementTime);
+
+        // Fade objects infront of camera
+        FadeObstructions(distanceToBattle - 0.5f, obstructionCheckDirections);
+
         doneBattle = false;
     }
 
@@ -261,9 +288,45 @@ public class CameraController : MonoBehaviour
         cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
     }
 
-    void OnDrawGizmos()
+    void FadeObstructions(float distance, Vector3[] directions)
     {
-        //Gizmos.DrawSphere(attackPosition, 1);
+        foreach (Vector3 dir in directions)
+        {
+            RaycastHit[] hits;
 
+            // TODO: setup layermask to improve performance and filter hits
+            hits = Physics.RaycastAll(cameraTransform.position, dir, distance);
+            //Debug.DrawRay(cameraTransform.position, dir, Color.red);
+
+            // Check all the hits from the raycasts and attach transparency script to the objects with renderers
+            // TODO: Change the distance to prevent other objects from becoming transparent
+            // Potential fix: Change the directions to take in an array of transforms instead. This will update the direction of the vectors every time this is called
+            foreach (RaycastHit hit in hits)
+            {
+                Renderer rend = hit.collider.GetComponent<Renderer>();
+                if (rend != null)
+                {
+                    CameraObstructionTransparency transparencyScript = rend.GetComponent<CameraObstructionTransparency>();
+                    if (transparencyScript == null)
+                    {
+                        //Debug.Log("Attached");
+                        transparencyScript = rend.gameObject.AddComponent<CameraObstructionTransparency>();
+                    }
+                    transparencyScript.MakeTransparent();
+                }
+            }
+        }
+        
+    }
+
+    void ResetCameraPosition()
+    {
+        newPosition = transform.position = controllerResetPosition;
+        newRotation = transform.rotation = controllerResetRotation;
+        cameraTransform.position = cameraResetPosition;
+        cameraTransform.rotation = cameraResetRotation;
+        attackCameraActive = false;
+        defocusing = false;
+        panning = false;
     }
 }

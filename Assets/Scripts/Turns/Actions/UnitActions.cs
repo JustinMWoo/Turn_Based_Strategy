@@ -55,7 +55,7 @@ public abstract class UnitActions : MonoBehaviour
         return tile;
     }
 
-    public void ComputeAdjacencyLists(float jumpHeight, Tile target, bool attack, bool ability)
+    public void ComputeAdjacencyLists(float jumpHeight, Tile target, bool tilesWithObjectOnTop, bool ability)
     {
         // Move this into here if tiles are going to be added or removed during gameplay
         // tiles = GameObject.FindGameObjectsWithTag("Tile");
@@ -65,7 +65,7 @@ public abstract class UnitActions : MonoBehaviour
             // Get tile script from the game object
             Tile t = tile.GetComponent<Tile>();
 
-            t.FindNeighbors(jumpHeight, target, attack, ability);
+            t.FindNeighbors(jumpHeight, target, tilesWithObjectOnTop, ability);
         }
     }
 

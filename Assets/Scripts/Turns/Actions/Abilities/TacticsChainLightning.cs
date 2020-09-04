@@ -144,7 +144,7 @@ public class TacticsChainLightning : TacticsAbility
 
     public void Attack()
     {
-        CameraController.instance.panTarget = targetTile.transform;
+        CameraController.instance.SetPanTarget(targetTile.transform.position);
 
         RaycastHit hit;
         foreach (Tile tile in chainTiles)

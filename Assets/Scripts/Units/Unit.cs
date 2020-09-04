@@ -54,6 +54,7 @@ public class Unit : MonoBehaviour
         {
             gameObject.AddComponent<PlayerMove>();
             gameObject.AddComponent<PlayerAttack>();
+            gameObject.AddComponent<InteractAction>();
             gameObject.AddComponent<PlayerFaceDir>();
 
             foreach (string ability in unitClass.AbilitiesPlayer)
@@ -140,18 +141,27 @@ public class Unit : MonoBehaviour
         turn = true;
         //Debug.Log(unitData.id + " Turn " + turn);
 
-        UnitActions move = GetComponent<TacticsMove>();
-        UnitActions attack = GetComponent<TacticsAttack>();
-        UnitActions faceDir = GetComponent<TacticsFaceDir>();
+        UnitActions[] availableActions = GetComponents<UnitActions>();
+        foreach (UnitActions action in availableActions)
+        {
+            if (!(action is TacticsAbility))
+            {
+                actions.Enqueue(action);
+            }
+        }
 
-        if (move != null)
-            actions.Enqueue(move);
+        //UnitActions move = GetComponent<TacticsMove>();
+        //UnitActions attack = GetComponent<TacticsAttack>();
+        //UnitActions faceDir = GetComponent<TacticsFaceDir>();
 
-        if (attack != null)
-            actions.Enqueue(attack);
+        //if (move != null)
+        //    actions.Enqueue(move);
 
-        if (faceDir != null)
-            actions.Enqueue(faceDir);
+        //if (attack != null)
+        //    actions.Enqueue(attack);
+
+        //if (faceDir != null)
+        //    actions.Enqueue(faceDir);
 
 
         // Initialize abilities

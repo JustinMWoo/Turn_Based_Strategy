@@ -32,8 +32,16 @@ public class TurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Initialize the first team
         if (!GameEvents.current.Loading && turnTeam.Count == 0 && units.Count > 1)
         {
+            // Make the player's turn first (Cannot save on opponents turn so this is okay when loading)
+            while (turnKey.Peek() != "Player")
+            {
+                String temp = turnKey.Dequeue();
+                turnKey.Enqueue(temp);
+
+            }
             InitTeamTurnQueue();
         }
     }
@@ -61,7 +69,7 @@ public class TurnManager : MonoBehaviour
             currentUnit = turnTeam.Peek();
             //Debug.Log(turnTeam.Peek().unitData.id);
             currentUnit.BeginTurn();
-            PanToTarget(currentUnit.transform);
+            CameraController.instance.SetPanTarget(currentUnit.transform.position);
         }
 
         if (!currentUnit.npc)
@@ -93,11 +101,14 @@ public class TurnManager : MonoBehaviour
     {
         Unit unit = turnTeam.Dequeue();
         unit.EndTurn();
-        currentUnit.ReduceCooldowns();
 
-        // Remove the unit from the save data if it is not called from the button being pressed
+
+        // Remove the unit from the save data and reduce its cooldowns if it is not called from the button being pressed
         if (!buttonPressed)
+        {
             turnData.unitsLeft.Remove(unit.unitData.id);
+            currentUnit.ReduceCooldowns();
+        }
         //Debug.Log(turnData.unitsLeft.Count);
 
         if (turnTeam.Count > 0) // Start the next units turn
@@ -198,12 +209,6 @@ public class TurnManager : MonoBehaviour
 
             buttonPressed = false;
         }
-    }
-
-    // Move this into CameraController?
-    static void PanToTarget(Transform target)
-    {
-        CameraController.instance.panTarget = target;
     }
 
     private void OnLoadStart()
