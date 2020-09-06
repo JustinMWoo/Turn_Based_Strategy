@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Stats.CharacterStats;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class StatsPanelScript : MonoBehaviour
@@ -22,5 +19,11 @@ public class StatsPanelScript : MonoBehaviour
         GameObject.Find("Intellect").GetComponent<Text>().text = "Intellect: " + CharacterPanel.SelectedCharacter.Intellect.Value;
         GameObject.Find("Dexterity").GetComponent<Text>().text = "Dexterity: " + CharacterPanel.SelectedCharacter.Dexterity.Value;
         GameObject.Find("Damage").GetComponent<Text>().text = "Damage: " + CharacterPanel.SelectedCharacter.Damage.Value;
+        GameObject.Find("Defense").GetComponent<Text>().text = "Defense: " + CharacterPanel.SelectedCharacter.Defense.Value;
+        GameObject.Find("MagicDefense").GetComponent<Text>().text = "Magic Defense: " + CharacterPanel.SelectedCharacter.MagicDefense.Value;
+        GameObject.Find("Crit%").GetComponent<Text>().text = "Crit %: " + CharacterPanel.SelectedCharacter.CritChance.Value;
+        GameObject.Find("Dodge%").GetComponent<Text>().text = "Dodge %: " + CharacterPanel.SelectedCharacter.DodgeChance.Value;
+        GameObject.Find("Movement").GetComponent<Text>().text = "Movement: " + CharacterPanel.SelectedCharacter.Movement.Value;
+        GameObject.Find("JumpHeight").GetComponent<Text>().text = "Jump Height: " + CharacterPanel.SelectedCharacter.JumpHeight.Value;
     }
 }

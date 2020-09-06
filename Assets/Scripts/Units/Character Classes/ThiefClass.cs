@@ -1,4 +1,4 @@
-﻿using Stats.CharacterStats;
+﻿
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Class/Thief")]

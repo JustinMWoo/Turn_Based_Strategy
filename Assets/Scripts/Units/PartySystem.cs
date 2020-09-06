@@ -5,7 +5,12 @@ using UnityEngine;
     {
         [SerializeField] List<Unit> party;
 
-        public void Add(Unit unit)
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void Add(Unit unit)
         {
             party.Add(unit);
         }
@@ -19,5 +24,6 @@ using UnityEngine;
         {
             return party;
         }
+        
     }
 

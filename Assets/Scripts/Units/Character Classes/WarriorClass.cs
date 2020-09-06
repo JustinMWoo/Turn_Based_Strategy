@@ -1,5 +1,4 @@
-﻿using Stats.CharacterStats;
-using UnityEngine;
+﻿using UnityEngine;
 
 // warrior class base stats and info
 [CreateAssetMenu(menuName = "Class/Warrior")]

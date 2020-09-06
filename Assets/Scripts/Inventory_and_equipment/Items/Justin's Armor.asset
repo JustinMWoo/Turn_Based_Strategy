@@ -14,10 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 2f1eaeeaad36ee5469eff7ff158f37ba, type: 3}
   Damage: 0
-  StrengthBonus: 10
-  IntellectBonus: 5
-  DexterityBonus: 5
-  HealthBonus: 50
-  ManaBonus: 30
+  StrengthBonus: 0
+  IntellectBonus: 0
+  DexterityBonus: 0
+  HealthBonus: 0
+  ManaBonus: 0
+  DefenseBonus: 10
+  MagicDefenseBonus: 10
+  CritChanceBonus: 5
+  DodgeChanceBonus: 5
+  MovementBonus: 2
+  JumpHeightBonus: 1
   EquipmentType: 0
-  RefreshUIFlag: 1
+  RefreshUIFlag: 0

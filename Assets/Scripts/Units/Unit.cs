@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Stats.CharacterStats;
@@ -29,6 +28,13 @@ public class Unit : MonoBehaviour
     public CharacterStats Intellect;
     public CharacterStats Dexterity;
     public CharacterStats Damage;
+    public CharacterStats Defense;
+    public CharacterStats MagicDefense;
+    public CharacterStats CritChance;
+    public CharacterStats DodgeChance;
+    public CharacterStats Movement;
+    public CharacterStats JumpHeight;
+
 
     public bool BaseStatsLoaded = false;
 
@@ -149,5 +155,7 @@ public class Unit : MonoBehaviour
         u.Strength.addModifier(u.unitClass.Strength);
         u.Intellect.addModifier(u.unitClass.Intellect);
         u.Dexterity.addModifier(u.unitClass.Dexterity);
+        u.Movement.addModifier(u.unitClass.Movement);
+        u.JumpHeight.addModifier(u.unitClass.JumpHeight); 
     }
 }

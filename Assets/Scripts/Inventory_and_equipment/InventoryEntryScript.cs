@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class InventoryEntryScript : MonoBehaviour, IPointerClickHandler
@@ -15,7 +13,7 @@ public class InventoryEntryScript : MonoBehaviour, IPointerClickHandler
             if (Item != null)
             {
                 CharacterPanel.SelectedCharacter.EquipFromInventory(Item);
-                this.transform.gameObject.SetActive(false);
+                Destroy(this.transform.gameObject);
             }
         }
     }
