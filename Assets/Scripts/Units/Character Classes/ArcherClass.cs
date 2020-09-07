@@ -1,4 +1,6 @@
-﻿using Stats.CharacterStats;
+
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Class/Archer")]
@@ -16,5 +18,6 @@ public class ArcherClass : BaseCharacterClass
 
         Movement = new StatModifier(4, this);
         JumpHeight = new StatModifier(2, this);
+
     }
 }

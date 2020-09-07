@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 // warrior class base stats and info
 [CreateAssetMenu(menuName = "Class/Warrior")]
@@ -16,6 +19,5 @@ public class WarriorClass : BaseCharacterClass
 
         Movement = new StatModifier(4, this);
         JumpHeight = new StatModifier(1, this);
-
     }
 }

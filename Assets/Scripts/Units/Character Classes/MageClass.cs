@@ -1,4 +1,5 @@
-﻿using Stats.CharacterStats;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Class/Mage")]
@@ -16,5 +17,11 @@ public class MageClass : BaseCharacterClass
 
         Movement = new StatModifier(3, this);
         JumpHeight = new StatModifier(1, this);
+
+        AbilitiesPlayer = new List<string>()
+        {
+            "Fireball",
+            "ChainLightning"
+        };
     }
 }
