@@ -7,7 +7,6 @@ public class BaseCharacterClass : ScriptableObject
     private string characterClassDescription;
 
     // Stats
-<<<<<<< HEAD
     private StatModifier strength;
     private StatModifier intellect;
     private StatModifier health;
@@ -16,6 +15,9 @@ public class BaseCharacterClass : ScriptableObject
 
     private StatModifier movement;
     private StatModifier jumpHeight;
+
+    private List<string> abilitiesPlayer;
+    private List<string> abilitiesNPC;
 
     // can use get to read, or set to write value of names/stats
     public string CharacterClassName

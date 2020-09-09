@@ -1,65 +1,4 @@
 ﻿using System;
-<<<<<<< HEAD
-using System.Collections.Generic;
-using UnityEngine;
-using Stats.CharacterStats;
-
-public class Unit : MonoBehaviour
-{
-
-    public string Name;
-
-    public bool turn = false; // True when it is this units turn
-    public Queue<UnitActions> actions = new Queue<UnitActions>();
-    [NonSerialized]
-    public UnitActions currAction;
-
-    public BaseCharacterClass unitClass;
-
-    // inventory variables
-    public SharedInventory SharedInventory;
-    public EquippableItem Weapon;
-    public EquippableItem Armor;
-    public EquippableItem Accessory;
-
-    // Stat Variables
-    public CharacterStats Health;
-    public CharacterStats Mana;
-    public CharacterStats Strength;
-    public CharacterStats Intellect;
-    public CharacterStats Dexterity;
-    public CharacterStats Damage;
-    public CharacterStats Defense;
-    public CharacterStats MagicDefense;
-    public CharacterStats CritChance;
-    public CharacterStats DodgeChance;
-    public CharacterStats Movement;
-    public CharacterStats JumpHeight;
-
-
-    public bool BaseStatsLoaded = false;
-
-    void Start()
-    {
-        // for inventory opening/closing
-
-        UnitActions[] acts = GetComponents<UnitActions>();
-        foreach (UnitActions action in acts)
-        {
-            actions.Enqueue(action);
-        }
-
-        currAction = actions.Peek();
-
-        // Add unit to turn order (static so dont need instance of turn manager)
-        TurnManager.AddUnit(this);
-        
-    }
-   
-    void Update()
-    {
-        currAction.Execute();
-=======
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,6 +40,31 @@ public class Unit : MonoBehaviour
     public int level;
 
     public HealthBar healthbar;
+
+    public string Name;
+
+    // inventory variables
+    public SharedInventory SharedInventory;
+    public EquippableItem Weapon;
+    public EquippableItem Armor;
+    public EquippableItem Accessory;
+
+    // Stat Variables
+    public CharacterStats Health;
+    public CharacterStats Mana;
+    public CharacterStats Strength;
+    public CharacterStats Intellect;
+    public CharacterStats Dexterity;
+    public CharacterStats Damage;
+    public CharacterStats Defense;
+    public CharacterStats MagicDefense;
+    public CharacterStats CritChance;
+    public CharacterStats DodgeChance;
+    public CharacterStats Movement;
+    public CharacterStats JumpHeight;
+
+
+    public bool BaseStatsLoaded = false;
 
     #endregion
     private void Awake()
@@ -195,72 +159,13 @@ public class Unit : MonoBehaviour
 
         unitData.position = transform.position;
         unitData.rotation = transform.rotation;
->>>>>>> f9832f4bf6fbf9fd38d445594763108be8c00259
+
     }
 
     public void BeginTurn()
     {
         turn = true;
-<<<<<<< HEAD
-    }
 
-    public void EndTurn()
-    {
-        turn = false;
-    }
-
-    public void EquipFromInventory(EquippableItem item)
-    {
-        if (item.EquipmentType == EquipmentType.Weapon)
-        {
-            if (this.Weapon == null)
-            {
-                this.Weapon = item;
-                item.Equip(this);
-                SharedInventory.Remove(item);
-                
-            }
-            else
-            {
-                UnequipToInventory(this.Weapon);
-                this.Weapon = item;
-                item.Equip(this);
-                SharedInventory.Remove(item);
-            }
-        }
-
-        if (item.EquipmentType == EquipmentType.Armor)
-        {
-            if (this.Armor == null)
-            {
-                this.Armor = item;
-                item.Equip(this);
-                SharedInventory.Remove(item);
-            }
-            else
-            {
-                UnequipToInventory(this.Armor);
-                this.Armor = item;
-                item.Equip(this);
-                SharedInventory.Remove(item);
-            }
-        }
-
-        if (item.EquipmentType == EquipmentType.Accessory)
-        {
-            if (this.Accessory == null)
-            {
-                this.Accessory = item;
-                item.Equip(this);
-                SharedInventory.Remove(item);
-            }
-            else
-            {
-                UnequipToInventory(this.Accessory);
-                this.Accessory = item;
-                item.Equip(this);
-                SharedInventory.Remove(item);
-=======
         //Debug.Log(unitData.id + " Turn " + turn);
 
         UnitActions[] availableActions = GetComponents<UnitActions>();
@@ -330,47 +235,11 @@ public class Unit : MonoBehaviour
             if (abilityCooldowns[ability] != 0)
             {
                 abilityCooldowns[ability]--;
->>>>>>> f9832f4bf6fbf9fd38d445594763108be8c00259
             }
         }
     }
 
-<<<<<<< HEAD
-    public void UnequipToInventory(EquippableItem item)
-    {
-        item.Unequip(this);
-        item.RefreshUIFlag = true;
-        SharedInventory.Add(item);
-        
-        if (item.EquipmentType == EquipmentType.Weapon)
-        {
-            this.Weapon = null;
-        }
 
-        if (item.EquipmentType == EquipmentType.Armor)
-        {
-            this.Armor = null;
-        }
-
-        if (item.EquipmentType == EquipmentType.Accessory)
-        {
-            this.Accessory = null;
-        }
-        
-    }
-
-    public void AddBaseStats(Unit u)
-    {
-        u.Health.addModifier(u.unitClass.Health);
-        u.Mana.addModifier(u.unitClass.Mana);
-        u.Strength.addModifier(u.unitClass.Strength);
-        u.Intellect.addModifier(u.unitClass.Intellect);
-        u.Dexterity.addModifier(u.unitClass.Dexterity);
-        u.Movement.addModifier(u.unitClass.Movement);
-        u.JumpHeight.addModifier(u.unitClass.JumpHeight); 
-    }
-}
-=======
     void AddAbility(string id)
     {
         string tag;
@@ -408,6 +277,94 @@ public class Unit : MonoBehaviour
         TurnManager.RemoveUnit(this);
         Destroy(gameObject);
     }
-}
 
->>>>>>> f9832f4bf6fbf9fd38d445594763108be8c00259
+
+
+    public void EquipFromInventory(EquippableItem item)
+    {
+        if (item.EquipmentType == EquipmentType.Weapon)
+        {
+            if (this.Weapon == null)
+            {
+                this.Weapon = item;
+                item.Equip(this);
+                SharedInventory.Remove(item);
+
+            }
+            else
+            {
+                UnequipToInventory(this.Weapon);
+                this.Weapon = item;
+                item.Equip(this);
+                SharedInventory.Remove(item);
+            }
+        }
+
+        if (item.EquipmentType == EquipmentType.Armor)
+        {
+            if (this.Armor == null)
+            {
+                this.Armor = item;
+                item.Equip(this);
+                SharedInventory.Remove(item);
+            }
+            else
+            {
+                UnequipToInventory(this.Armor);
+                this.Armor = item;
+                item.Equip(this);
+                SharedInventory.Remove(item);
+            }
+        }
+
+        if (item.EquipmentType == EquipmentType.Accessory)
+        {
+            if (this.Accessory == null)
+            {
+                this.Accessory = item;
+                item.Equip(this);
+                SharedInventory.Remove(item);
+            }
+            else
+            {
+                UnequipToInventory(this.Accessory);
+                this.Accessory = item;
+                item.Equip(this);
+                SharedInventory.Remove(item);
+            }
+        }
+    }
+    public void UnequipToInventory(EquippableItem item)
+    {
+        item.Unequip(this);
+        item.RefreshUIFlag = true;
+        SharedInventory.Add(item);
+
+        if (item.EquipmentType == EquipmentType.Weapon)
+        {
+            this.Weapon = null;
+        }
+
+        if (item.EquipmentType == EquipmentType.Armor)
+        {
+            this.Armor = null;
+        }
+
+        if (item.EquipmentType == EquipmentType.Accessory)
+        {
+            this.Accessory = null;
+        }
+
+    }
+
+    public void AddBaseStats(Unit u)
+    {
+        u.Health.addModifier(u.unitClass.Health);
+        u.Mana.addModifier(u.unitClass.Mana);
+        u.Strength.addModifier(u.unitClass.Strength);
+        u.Intellect.addModifier(u.unitClass.Intellect);
+        u.Dexterity.addModifier(u.unitClass.Dexterity);
+        u.Movement.addModifier(u.unitClass.Movement);
+        u.JumpHeight.addModifier(u.unitClass.JumpHeight);
+    }
+}
