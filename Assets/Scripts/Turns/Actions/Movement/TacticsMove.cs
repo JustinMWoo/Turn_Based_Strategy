@@ -6,7 +6,7 @@ public class TacticsMove : UnitActions
 {
     #region Variables
 
-    List<Tile> selectableTiles = new List<Tile>();
+    List<Tile> moveableTiles = new List<Tile>();
 
     Stack<Tile> path = new Stack<Tile>();
 
@@ -21,10 +21,12 @@ public class TacticsMove : UnitActions
 
     // The actual tile the unit will move to in A*
     public Tile actualTargetTile;
+
+    protected bool doneMoving = false;
     #endregion
 
     // BFS for selectable tiles
-    public void FindSelectableTiles()
+    protected void FindMoveableTiles()
     {
         ComputeAdjacencyLists(unit.unitClass.JumpHeight.Value, null, false, false);
         GetCurrentTile();
@@ -38,7 +40,7 @@ public class TacticsMove : UnitActions
         {
             Tile t = queue.Dequeue();
 
-            selectableTiles.Add(t);
+            moveableTiles.Add(t);
             t.selectable = true;
 
             if (t.distance < unit.unitClass.Movement.Value)
@@ -58,7 +60,7 @@ public class TacticsMove : UnitActions
         }
     }
 
-    public void MoveToTile(Tile tile)
+    protected void MoveToTile(Tile tile)
     {
         path.Clear();
         tile.target = true;
@@ -74,7 +76,7 @@ public class TacticsMove : UnitActions
         }
     }
 
-    public void Move()
+    protected void Move(bool onlyMove)
     {
         if (path.Count > 0)
         {
@@ -114,8 +116,12 @@ public class TacticsMove : UnitActions
         else
         {
             // End the units move action
-            Done();
-            TurnManager.EndAction(false, true);
+            if (onlyMove)
+            {
+                Done();
+                TurnManager.EndAction(false, true);
+            }
+            doneMoving = true;
         }
     }
 
@@ -127,12 +133,12 @@ public class TacticsMove : UnitActions
             currentTile = null;
         }
 
-        foreach (Tile tile in selectableTiles)
+        foreach (Tile tile in moveableTiles)
         {
-            tile.Reset(false);
+            tile.Reset(false, true);
         }
 
-        selectableTiles.Clear();
+        moveableTiles.Clear();
     }
 
     #region Jumping
@@ -239,7 +245,7 @@ public class TacticsMove : UnitActions
     #endregion
 
     // Use A* to find a path
-    protected void FindPath(Tile target)
+    protected void FindPath(Tile target, bool onlyMove)
     {
         ComputeAdjacencyLists(unit.unitClass.JumpHeight.Value, target, false, false);
         GetCurrentTile();
@@ -260,7 +266,14 @@ public class TacticsMove : UnitActions
 
             if (t == target)
             {
-                actualTargetTile = FindEndTile(t);
+                if (onlyMove)
+                {
+                    actualTargetTile = FindEndTile(t);
+                }
+                else
+                {
+                    actualTargetTile = t;
+                }
                 MoveToTile(actualTargetTile);
                 return;
             }
@@ -347,6 +360,7 @@ public class TacticsMove : UnitActions
     {
         RemoveSelectableTiles();
         moving = false;
+        doneMoving = false;
     }
 
     // How can I reorganize so I dont need this?

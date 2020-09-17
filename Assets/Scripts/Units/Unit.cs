@@ -8,12 +8,17 @@ public class Unit : MonoBehaviour
 {
     #region Variables
     // Save Info
+    [HideInInspector]
     public UnitData unitData;
     public bool npc;
+    // Determines which prefab is created on load
+    // TODO: Change this to be a better loading system
     public int unitType;
 
+    [HideInInspector]
     public bool turn = false; // True when it is this units turn
     //public bool turnDone = false;
+
     public bool usingAbility = false;
 
     public List<TacticsAbility> AvailableAbilitites = new List<TacticsAbility>();
@@ -27,14 +32,6 @@ public class Unit : MonoBehaviour
 
     public Dictionary<string, int> abilityCooldowns = new Dictionary<string, int>();
 
-
-    // Movement and jump height specified on classes
-
-    // Change these into values of equipped weapon etc.
-    public int weaponRange = 5;
-    public int weaponVerticality = 1;
-    public int weaponDamage = 50;
-
     public int maxHP;
     public int currentHP;
     public int level;
@@ -43,6 +40,7 @@ public class Unit : MonoBehaviour
 
     public string Name;
 
+    // TODO: Onload need to reequip all the items onto the unit in order to get the character stats to line up again
     // inventory variables
     public SharedInventory SharedInventory;
     public EquippableItem Weapon;
@@ -71,9 +69,9 @@ public class Unit : MonoBehaviour
     {
         if (npc)
         {
-            gameObject.AddComponent<NPCMove>();
+            gameObject.AddComponent<TacticsAI>();
             //gameObject.AddComponent<NPCAttack>();
-            gameObject.AddComponent<NPCFaceDir>();
+            //gameObject.AddComponent<NPCFaceDir>();
         }
         else
         {
@@ -87,6 +85,24 @@ public class Unit : MonoBehaviour
                 AddAbility(ability);
             }
         }
+
+        /* Temporarily instantiate and equip gear onto unit to change units stats 
+         * for testing damage calculator
+         * 
+         * 
+         */
+        AddBaseStats(this);
+
+        if (Weapon != null)
+            Weapon.Equip(this);
+        if (Armor != null)
+            Armor.Equip(this);
+        if (Accessory != null)
+            Accessory.Equip(this);
+
+
+
+
     }
     void Start()
     {
@@ -108,13 +124,13 @@ public class Unit : MonoBehaviour
         if ((unitData.health ?? 0) == 0)
         {
             // HP IN CLASSES SHOULD PROBABLY BE INT NOT FLOAT
-            currentHP = (int)unitClass.Health.Value;
+            currentHP = (int)Health.Value;
         }
         else
         {
             currentHP = (int)unitData.health;
         }
-        maxHP = (int)unitClass.Health.Value;
+        maxHP = (int)Health.Value;
 
         // Create ability cooldown dictionary
         if (unitData.abilityCooldowns == null)
@@ -150,11 +166,6 @@ public class Unit : MonoBehaviour
             //Debug.Log(TurnManager.GetCurrentAction());
 
             actions.Peek().Execute();
-        }
-
-        if (currentHP <= 0)
-        {
-            Die();
         }
 
         unitData.position = transform.position;
@@ -225,6 +236,11 @@ public class Unit : MonoBehaviour
 
         // Update save hp
         unitData.health = currentHP;
+
+        if (currentHP <= 0)
+        {
+            Die();
+        }
     }
 
     public void ReduceCooldowns()
@@ -267,7 +283,14 @@ public class Unit : MonoBehaviour
         TurnManager.RemoveUnit(this);
 
         // Remove unit
-        Destroy(gameObject);
+        if (npc)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void DestroyMe()

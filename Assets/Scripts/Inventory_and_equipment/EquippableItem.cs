@@ -1,11 +1,22 @@
 ﻿using UnityEngine;
-
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public enum EquipmentType
 {
     Armor,
     Weapon,
     Accessory,
 }
+
+public enum WeaponScaling
+{
+    NA,
+    Str,
+    Int,
+    Dex
+}
+
 [CreateAssetMenu]
 public class EquippableItem : Item
 {
@@ -24,9 +35,19 @@ public class EquippableItem : Item
     public int JumpHeightBonus;
     [Space]                                 // creates space between the variables in the unity inspector
 
+    [HideInInspector]
     public EquipmentType EquipmentType;
     public bool RefreshUIFlag;
-    
+
+
+    [HideInInspector]
+    public WeaponScaling WeaponScaling;
+    [HideInInspector]
+    public int WeaponRange;
+    [HideInInspector]
+    public int WeaponVerticality;
+
+
 
     public void Equip(Unit c)
     {
@@ -98,3 +119,24 @@ public class EquippableItem : Item
         c.JumpHeight.removeAllModifiersFromSource(this);
     }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(EquippableItem))]
+public class EquippableItem_Editor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+        EquippableItem script = (EquippableItem)target;
+
+        script.EquipmentType = (EquipmentType)EditorGUILayout.EnumPopup("Equipment Type", script.EquipmentType);
+        if (script.EquipmentType == EquipmentType.Weapon)
+        {
+            script.WeaponScaling = (WeaponScaling)EditorGUILayout.EnumPopup("Weapon Scaling", script.WeaponScaling);
+            script.WeaponRange = EditorGUILayout.IntField("Weapon Range", script.WeaponRange);
+            script.WeaponVerticality = EditorGUILayout.IntField("Weapon Verticality", script.WeaponVerticality);
+        }
+
+    }
+}
+#endif

@@ -123,12 +123,12 @@ public class TacticsFireball : TacticsAbility
 
         foreach (Tile tile in selectableTiles)
         {
-            tile.Reset(false);
+            tile.Reset(false, true);
         }
 
         foreach (Tile tile in AOETiles)
         {
-            tile.Reset(false);
+            tile.Reset(false, true);
         }
 
         selectableTiles.Clear();

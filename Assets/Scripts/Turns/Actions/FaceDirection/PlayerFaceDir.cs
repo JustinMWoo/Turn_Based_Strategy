@@ -19,15 +19,14 @@ public class PlayerFaceDir : TacticsFaceDir
         if (!waiting)
         {
             CheckMouse();
-        }
+            // User clicks and mouse is not over the UI
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            {
+                init = false;
+                Done();
 
-        // User clicks and mouse is not over the UI
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-        {
-            init = false;
-            Done();
-
-            StartCoroutine(WaitAndEndAction(0.5f,true));
+                StartCoroutine(WaitAndEndAction(0.5f, true));
+            }
         }
     }
 

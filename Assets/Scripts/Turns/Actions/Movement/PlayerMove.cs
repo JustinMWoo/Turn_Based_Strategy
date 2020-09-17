@@ -5,11 +5,6 @@ using UnityEngine.EventSystems;
 
 public class PlayerMove : TacticsMove
 {
-    void Start()
-    {
-        Init();
-    }
-
     public override void Execute()
     {
         //Debug.DrawRay(transform.position, transform.forward);
@@ -21,13 +16,13 @@ public class PlayerMove : TacticsMove
 
         if (!moving)
         {
-            FindSelectableTiles();
+            FindMoveableTiles();
             CheckMouse();
         }
         else
         {
             TurnManager.playerUnitTurnStart = false;
-            Move();
+            Move(true);
         }
     }
     void CheckMouse()

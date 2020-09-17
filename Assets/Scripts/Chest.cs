@@ -28,6 +28,7 @@ public class Chest : MonoBehaviour
     void Opened()
     {
         // End the units turn
+        TurnManager.currentUnit.actions.Peek().Done();
         TurnManager.EndAction(true, true);
         opened = true;
     }

@@ -40,8 +40,13 @@ public class InteractAction : UnitActions
             {
                 if (hit.collider.CompareTag("Chest"))
                 {
-                    tile.selectable = true;
-                    interactableFound = true;
+                    Chest chest = hit.collider.GetComponent<Chest>();
+                    if (!chest.opened)
+                    {
+                        tile.selectable = true;
+                        interactableFound = true;
+                        //Debug.Log("Interactable found");
+                    }
                 }
             }
         }
@@ -76,7 +81,7 @@ public class InteractAction : UnitActions
         RaycastHit hit;
         if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1))
         {
-            if (hit.collider.CompareTag("Chest") && !hit.collider.GetComponent<Chest>().opened)
+            if (hit.collider.CompareTag("Chest") )//&& !hit.collider.GetComponent<Chest>().opened)
             {
                 hit.collider.GetComponent<Animator>().Play("OpenChest");
                 // TODO: Add chests item to units inventory
@@ -87,12 +92,13 @@ public class InteractAction : UnitActions
     public override void Done()
     {
         interactablesChecked = false;
+        interactableFound = false;
         foreach (Tile tile  in currentTile.adjacencyList)
         {
-            tile.Reset(false);
+            tile.Reset(false, true);
         }
 
-        currentTile.Reset(false);
+        currentTile.Reset(false, true);
     }
 
    

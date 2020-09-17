@@ -5,12 +5,6 @@ using UnityEngine;
 public class NPCMove : TacticsMove
 {
     GameObject target;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Init();
-    }
-
     public override void Execute()
     {
         Debug.DrawRay(transform.position, transform.forward);
@@ -24,19 +18,19 @@ public class NPCMove : TacticsMove
         {
             FindNearestTarget();
             CalculatePath();
-            FindSelectableTiles();
+            FindMoveableTiles();
             actualTargetTile.target = true;
         }
         else
         {
-            Move();
+            Move(true);
         }
     }
 
     void CalculatePath()
     {
         Tile targetTile = GetTargetTile(target);
-        FindPath(targetTile);
+        FindPath(targetTile, true);
     }
 
     void FindNearestTarget()

@@ -15,6 +15,7 @@ public class Tile : MonoBehaviour
     public bool AOE = false;
 
     public List<Tile> adjacencyList = new List<Tile>();
+    public List<Tile> adjacencyListAIAttack = new List<Tile>();
 
     // BFS variables
     public bool visited = false;
@@ -26,7 +27,10 @@ public class Tile : MonoBehaviour
     public float g = 0; // Cost of parent to current tile
     public float h = 0; // Cost from processed tile to destination
 
-
+    // AI variables
+    public List<Unit> targetList = new List<Unit>();
+    public Unit bestTarget;
+    public int score;
     #endregion
 
     // Start is called before the first frame update
@@ -64,7 +68,7 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void Reset(bool ability)
+    public void Reset(bool ability, bool clearTargets)
     {
         adjacencyList.Clear();
         
@@ -83,21 +87,44 @@ public class Tile : MonoBehaviour
         distance = 0;
 
         f = g = h = 0;
+
+        if (clearTargets)
+        {
+            targetList.Clear();
+            bestTarget = null;
+        }
+        
+        score = 0;
     }
 
     public void FindNeighbors(float jumpHeight, Tile target, bool tilesWithObjectOnTop, bool ability)
     {
 
-        Reset(ability);
+        Reset(ability, false);
 
 
-        CheckTile(Vector3.forward, jumpHeight, target, tilesWithObjectOnTop);
-        CheckTile(-Vector3.forward, jumpHeight, target, tilesWithObjectOnTop);
-        CheckTile(Vector3.right, jumpHeight, target, tilesWithObjectOnTop);
-        CheckTile(-Vector3.right, jumpHeight, target, tilesWithObjectOnTop);
+        CheckTile(Vector3.forward, jumpHeight, target, tilesWithObjectOnTop, false);
+        CheckTile(-Vector3.forward, jumpHeight, target, tilesWithObjectOnTop, false);
+        CheckTile(Vector3.right, jumpHeight, target, tilesWithObjectOnTop, false);
+        CheckTile(-Vector3.right, jumpHeight, target, tilesWithObjectOnTop, false);
     }
 
-    public void CheckTile(Vector3 direction, float jumpHeight, Tile target, bool tilesWithObjectOnTop)
+    public void FindNeighborsAI(float jumpHeight, float weaponVerticality)
+    {
+        Reset(false, false);
+
+        CheckTile(Vector3.forward, jumpHeight, null, false, false);
+        CheckTile(-Vector3.forward, jumpHeight, null, false, false);
+        CheckTile(Vector3.right, jumpHeight,  null, false, false);
+        CheckTile(-Vector3.right, jumpHeight, null, false, false);
+
+        CheckTile(Vector3.forward, weaponVerticality, null, false, true);
+        CheckTile(-Vector3.forward, weaponVerticality, null, false, true);
+        CheckTile(Vector3.right, weaponVerticality, null, false, true);
+        CheckTile(-Vector3.right, weaponVerticality, null, false, true);
+    }
+
+    public void CheckTile(Vector3 direction, float jumpHeight, Tile target, bool tilesWithObjectOnTop, bool AIAttack)
     {
         // Check at approx half the size of one tile
         Vector3 halfExtents = new Vector3(0.25f, jumpHeight, 0.25f);
@@ -114,7 +141,14 @@ public class Tile : MonoBehaviour
                 // Check if there is an object above the tile (such as a unit or obstacle)
                 if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) || (tile == target) || tilesWithObjectOnTop)
                 {
-                    adjacencyList.Add(tile);
+                    if (!AIAttack)
+                    {
+                        adjacencyList.Add(tile);
+                    }
+                    else
+                    {
+                        adjacencyListAIAttack.Add(tile);
+                    }
                 }
             }
         }

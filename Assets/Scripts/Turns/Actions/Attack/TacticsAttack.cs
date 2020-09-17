@@ -27,8 +27,7 @@ public class TacticsAttack : UnitActions
     public void FindAttackableTiles()
     {
         RaycastHit hit;
-        // REPLACE WITH VERTICALITY ATTACK VALUE
-        ComputeAdjacencyLists(unit.weaponVerticality, null, true, false);
+        ComputeAdjacencyLists(unit.Weapon.WeaponVerticality, null, true, false);
         GetCurrentTile();
 
         Queue<Tile> queue = new Queue<Tile>();
@@ -57,8 +56,7 @@ public class TacticsAttack : UnitActions
             processedTiles.Add(t);
             t.attackRange = true;
 
-            // CHANGE TO RANGE VALUE OF EQUIPPED WEAPON ON UNIT
-            if (t.distance < unit.weaponRange)
+            if (t.distance < unit.Weapon.WeaponRange)
             {
                 foreach (Tile tile in t.adjacencyList)
                 {
@@ -92,7 +90,7 @@ public class TacticsAttack : UnitActions
 
         foreach (Tile tile in processedTiles)
         {
-            tile.Reset(false);
+            tile.Reset(false, true);
         }
 
         attackableTiles.Clear();
@@ -156,9 +154,8 @@ public class TacticsAttack : UnitActions
         }
         else if (damageCalc)
         {
-            attackTarget.GetComponent<Unit>().TakeDamage(unit.weaponDamage);
+            DamageCalculator.Current.DealDamage(unit, attackTarget.GetComponent<Unit>(), DamageType.Physical);
 
-            // ADD DAMAGE CALCULATIONS
             damageCalc = false;
             moveBack = true;
         }

@@ -5,10 +5,6 @@ using UnityEngine.EventSystems;
 
 public class PlayerFireball : TacticsFireball
 {
-    private void Start()
-    {
-        Init();
-    }
     public override void Execute()
     {
         Debug.DrawRay(transform.position, transform.forward);

@@ -5,11 +5,6 @@ using UnityEngine.EventSystems;
 
 public class PlayerAttack : TacticsAttack
 {
-    void Start()
-    {
-        Init();
-    }
-
     public override void Execute()
     {
         Debug.DrawRay(transform.position, transform.forward);

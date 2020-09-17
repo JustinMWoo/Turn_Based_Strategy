@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameplayUIManager : MonoBehaviour
 {
     public HealthBar healthbar;
-    public GameObject healthCanvas;
+    public GameObject healthUI;
 
     private void Start()
     {
@@ -29,37 +29,59 @@ public class GameplayUIManager : MonoBehaviour
             Unit targetUnit = hit.collider.GetComponent<Unit>();
             if (targetUnit != null)
             {
-                // Update top health bar
-                healthCanvas.SetActive(true);
-                healthbar.SetMaxHealth(targetUnit.maxHP);
-                healthbar.SetHealth(targetUnit.currentHP);
+                // If unit is controlled by the player  
+                // If unit is on the attack action then show damage values on health bar
+                if (!TurnManager.currentUnit.npc && TurnManager.currentUnit.actions.Peek() is TacticsAttack)
+                {
+                    healthUI.SetActive(true);
+                    healthbar.SetMaxHealth(targetUnit.maxHP);
+                    RaycastHit selectableTile;
+                    if(Physics.Raycast(targetUnit.transform.position, Vector3.down, out selectableTile, 1f))
+                    {
+                        Tile tile = selectableTile.collider.GetComponent<Tile>();
+                        if (tile!=null && tile.selectable)
+                        {
+                            int damage = DamageCalculator.Current.CalculateDamage(TurnManager.currentUnit, targetUnit, DamageType.Physical, false, null);
+                            healthbar.SetDamagedHealth(targetUnit.currentHP, damage);
+                        }
+                        else
+                        {
+                            // TODO: remove repeated code?
+                            healthbar.SetHealth(targetUnit.currentHP);
+                        }
+                    }
+                    else
+                    {
+                        healthbar.SetHealth(targetUnit.currentHP);
+                    } 
+                }
+                // If on ability show calculated damage for ability instead
+                else if (!TurnManager.currentUnit.npc && TurnManager.currentUnit.usingAbility)
+                {
+                    healthUI.SetActive(true);
+                    healthbar.SetMaxHealth(targetUnit.maxHP);
+                }
+                else // Not the players turn
+                {
+                    // Update top health bar
+                    healthUI.SetActive(true);
+                    healthbar.SetMaxHealth(targetUnit.maxHP);
+                    healthbar.SetHealth(targetUnit.currentHP);
 
-                // Update the values of the stats panel with hovered units current stats
+                    // TODO: Update the values of the stats panel with hovered units current stats
+                }
             }
             else
             {
-                healthCanvas.SetActive(false);
+                healthUI.SetActive(false);
             }
         }
         else
         {
-            healthCanvas.SetActive(false);
+            healthUI.SetActive(false);
         }
 
-        // If unit is controlled by the player  
-        if (!TurnManager.currentUnit.npc)
-        {
-            // If unit is on the attack action then show damage values on health bar
-            if (TurnManager.currentUnit.actions.Peek() is TacticsAttack)
-            {
 
-            }
-            // If on ability show calculated damage for ability instead
-            if (TurnManager.currentUnit.usingAbility)
-            {
-
-            }
-        }
 
     }
 

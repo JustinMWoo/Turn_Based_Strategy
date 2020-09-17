@@ -174,12 +174,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &17057245
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -293,12 +297,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &18900817
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -542,12 +550,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &47097293
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -661,12 +673,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &59459145
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -780,12 +796,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &59887156
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -899,12 +919,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &62962191
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1018,12 +1042,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &91612018
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1215,12 +1243,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &108437959
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1334,12 +1366,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &115036924
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1703,12 +1739,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &156462488
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1822,12 +1862,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &167997181
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1941,12 +1985,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &168765163
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2060,12 +2108,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &169374941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2215,12 +2267,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &174350873
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2464,12 +2520,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &193375733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2739,12 +2799,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &224661368
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2858,12 +2922,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &245329135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2977,12 +3045,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &251082599
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3096,12 +3168,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &288333724
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3215,12 +3291,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &291120857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3334,12 +3414,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &301737354
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3453,12 +3537,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &302805775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3572,12 +3660,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &311941858
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3821,12 +3913,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &337914404
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3982,12 +4078,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &361959099
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4101,12 +4201,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &372383951
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4220,12 +4324,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &377511956
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4375,12 +4483,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &407272213
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4494,12 +4606,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &411076399
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4560,6 +4676,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411076396}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &422314297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4337116776982583735, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
+    type: 3}
+  m_PrefabInstance: {fileID: 4337116777214451460}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87c6503e34bb264d97887e646081387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &430105973
 GameObject:
   m_ObjectHideFlags: 0
@@ -4785,12 +4913,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &440672545
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4904,12 +5036,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &445739067
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5000,7 +5136,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1882060219}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5230,12 +5366,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &477834652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5349,12 +5489,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &479030295
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5468,12 +5612,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &483832485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5587,12 +5735,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &488282342
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5706,12 +5858,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &498906438
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5825,12 +5981,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &501640568
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5944,12 +6104,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &502413937
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6142,12 +6306,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &508497153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6261,12 +6429,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &529660329
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6415,12 +6587,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &550063876
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6534,12 +6710,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &561482294
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6675,7 +6855,7 @@ PrefabInstance:
     - target: {fileID: 4337116776982583734, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 4337116776982583734, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
         type: 3}
@@ -6717,6 +6897,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4337116776982583735, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
+        type: 3}
+      propertyPath: Weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: c8ab3c034e91c2c47992ceeba29364f0,
+        type: 2}
+    - target: {fileID: 4337116776982583735, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
+        type: 3}
+      propertyPath: Armor
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c15572459348674b8071f127363fd2d,
+        type: 2}
     - target: {fileID: 4337116777240164340, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
         type: 3}
       propertyPath: cam
@@ -6787,12 +6979,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &580436851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6984,12 +7180,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &620816065
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7413,12 +7613,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &636452047
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7532,12 +7736,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &652626680
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7693,12 +7901,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &687092893
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7812,12 +8024,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &703737220
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8023,12 +8239,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &712141176
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8142,12 +8362,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &733961078
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8261,12 +8485,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &737798703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8380,12 +8608,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &755013417
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8499,12 +8731,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &757602483
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8618,12 +8854,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &795797205
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8737,12 +8977,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &805246071
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8930,12 +9174,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &807009899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9269,12 +9517,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &825012388
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9388,12 +9640,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &825831804
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9507,12 +9763,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &831592662
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9626,12 +9886,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &835396183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9745,12 +10009,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &838743538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9864,12 +10132,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &844529989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10198,12 +10470,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &875357584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10317,12 +10593,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &886461782
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10436,12 +10716,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &891660647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10555,12 +10839,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &906757322
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10674,12 +10962,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &907650730
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10793,12 +11085,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &908629012
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10884,11 +11180,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912567171}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1882060219}
+  m_Father: {fileID: 995982300}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10986,12 +11282,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &923730466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11229,12 +11529,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &954557246
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11378,105 +11682,6 @@ Transform:
   m_Father: {fileID: 823297673}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
---- !u!1 &969034282
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 969034283}
-  - component: {fileID: 969034287}
-  - component: {fileID: 969034286}
-  - component: {fileID: 969034285}
-  m_Layer: 5
-  m_Name: Health Canvas UI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &969034283
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969034282}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.5, z: 1}
-  m_Children:
-  - {fileID: 1882060219}
-  m_Father: {fileID: 991765234}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 325, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &969034285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969034282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &969034286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969034282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
---- !u!223 &969034287
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969034282}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1 &972447051
 GameObject:
   m_ObjectHideFlags: 0
@@ -11650,12 +11855,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &986305764
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11716,6 +11925,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986305761}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &987550242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 987550244}
+  - component: {fileID: 987550243}
+  m_Layer: 0
+  m_Name: DamageCalculator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &987550243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987550242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8edbe0c2ce116c845b72afedcf9a41ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingTextPrefab: {fileID: 1798029483066365580, guid: f91e14a4c1ac45f4e8fd2f10f2f7b0ec,
+    type: 3}
+--- !u!4 &987550244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987550242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &988019864
 GameObject:
   m_ObjectHideFlags: 0
@@ -11769,12 +12023,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &988019867
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11888,12 +12146,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &988644119
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11986,8 +12248,8 @@ RectTransform:
   - {fileID: 1504838725}
   - {fileID: 184525501}
   - {fileID: 1697726595}
-  - {fileID: 969034283}
   - {fileID: 1512032150}
+  - {fileID: 1882060219}
   m_Father: {fileID: 636417530}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11996,6 +12258,93 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0.00012207031}
   m_SizeDelta: {x: -1, y: 1.0002441}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &995982299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 995982300}
+  - component: {fileID: 995982301}
+  m_Layer: 5
+  m_Name: HealthBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &995982300
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995982299}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 912567172}
+  m_Father: {fileID: 1882060219}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &995982301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995982299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 0}
+  m_FillRect: {fileID: 912567172}
+  m_HandleRect: {fileID: 0}
+  m_Direction: 0
+  m_MinValue: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1000341117
 GameObject:
   m_ObjectHideFlags: 0
@@ -12049,12 +12398,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1000341120
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12245,12 +12598,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1031491549
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12364,12 +12721,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1058932274
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12483,12 +12844,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1081171968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12758,12 +13123,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1094928625
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12877,12 +13246,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1102093379
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12996,12 +13369,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1120846678
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13115,12 +13492,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1128399548
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13234,12 +13615,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1131129518
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13473,12 +13858,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1183422097
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13592,12 +13981,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1185536031
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13753,12 +14146,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1209934139
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13872,12 +14269,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1221796480
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13938,6 +14339,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221796477}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1251077231 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4337116776982583735, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
+    type: 3}
+  m_PrefabInstance: {fileID: 578532957}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87c6503e34bb264d97887e646081387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1260078193
 GameObject:
   m_ObjectHideFlags: 0
@@ -13991,12 +14404,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1260078196
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14110,12 +14527,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1262733476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14229,12 +14650,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1266262963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14384,12 +14809,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1340893147
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14503,12 +14932,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1342061043
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14778,12 +15211,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1367737595
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14941,12 +15378,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1387021689
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15060,12 +15501,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1399287239
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15221,12 +15666,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1414355377
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15340,12 +15789,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1419312225
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15406,6 +15859,80 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419312222}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1420465471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1420465472}
+  - component: {fileID: 1420465474}
+  - component: {fileID: 1420465473}
+  m_Layer: 5
+  m_Name: DamageFill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1420465472
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420465471}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1781020333}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1420465473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420465471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.46226418, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1420465474
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420465471}
+  m_CullTransparentMesh: 0
 --- !u!1 &1437322816
 GameObject:
   m_ObjectHideFlags: 0
@@ -15459,12 +15986,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1437322819
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15621,12 +16152,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1453353707
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15740,12 +16275,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1456768796
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15859,12 +16398,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1458070160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15978,12 +16521,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1462762147
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16537,12 +17084,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1504681836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16725,7 +17276,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 991765234}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16900,12 +17451,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1535157270
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17108,12 +17663,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1580719115
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17227,12 +17786,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1581158262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17346,12 +17909,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1588031576
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17465,12 +18032,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1599147253
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17584,12 +18155,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1605779498
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17703,12 +18278,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1610450856
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17822,12 +18401,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1617198975
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18065,12 +18648,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1627412864
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18184,12 +18771,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1636165602
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18303,12 +18894,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1649665585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18422,12 +19017,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1650547173
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18541,12 +19140,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1654939975
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18738,12 +19341,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1664478399
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18804,6 +19411,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664478396}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1680252405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1680252407}
+  - component: {fileID: 1680252406}
+  m_Layer: 0
+  m_Name: PartySystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1680252406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680252405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4091b0f617aaf9349bab686113da3cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  party:
+  - {fileID: 422314297}
+  - {fileID: 1251077231}
+--- !u!4 &1680252407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680252405}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1697726594
 GameObject:
   m_ObjectHideFlags: 0
@@ -18965,12 +19618,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1701567510
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19084,12 +19741,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1702769609
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19411,12 +20072,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1739824185
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19530,12 +20195,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1745730938
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19649,12 +20318,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1746153593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19757,6 +20430,93 @@ Transform:
   m_Father: {fileID: 470044366}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1781020332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1781020333}
+  - component: {fileID: 1781020334}
+  m_Layer: 5
+  m_Name: DamageBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1781020333
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781020332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1420465472}
+  m_Father: {fileID: 1882060219}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1781020334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781020332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 0}
+  m_FillRect: {fileID: 1420465472}
+  m_HandleRect: {fileID: 0}
+  m_Direction: 0
+  m_MinValue: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1785921892
 GameObject:
   m_ObjectHideFlags: 0
@@ -19810,12 +20570,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1785921895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20007,12 +20771,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1791240747
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20274,12 +21042,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1826687713
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20487,6 +21259,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6507548722777130128, guid: be05d17129e1d9a42a0e02e9287dce29,
+        type: 3}
+      propertyPath: Armor
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c15572459348674b8071f127363fd2d,
+        type: 2}
+    - target: {fileID: 6507548722777130128, guid: be05d17129e1d9a42a0e02e9287dce29,
+        type: 3}
+      propertyPath: Weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: c8ab3c034e91c2c47992ceeba29364f0,
+        type: 2}
     - target: {fileID: 6507548722777130135, guid: be05d17129e1d9a42a0e02e9287dce29,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20785,15 +21569,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1882060219}
-  - component: {fileID: 1882060221}
   - component: {fileID: 1882060220}
   m_Layer: 5
-  m_Name: Health Bar
+  m_Name: HealthUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1882060219
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20801,19 +21584,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882060218}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75000006, y: 0.5, z: 1}
   m_Children:
-  - {fileID: 912567172}
+  - {fileID: 1781020333}
+  - {fileID: 995982300}
   - {fileID: 445992629}
-  m_Father: {fileID: 969034283}
-  m_RootOrder: 0
+  m_Father: {fileID: 991765234}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -19.936691}
+  m_SizeDelta: {x: 326, y: 49.873398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1882060220
 MonoBehaviour:
@@ -20827,7 +21611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2bed6a850f56f248ad18f17b2ad82c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 1882060221}
+  slider: {fileID: 995982301}
   gradient:
     serializedVersion: 2
     key0: {r: 0.7924528, g: 0.018689923, b: 0.018689923, a: 1}
@@ -20858,56 +21642,8 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   fill: {fileID: 912567173}
---- !u!114 &1882060221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1882060218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 0
-  m_TargetGraphic: {fileID: 0}
-  m_FillRect: {fileID: 912567172}
-  m_HandleRect: {fileID: 0}
-  m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
+  damageSlider: {fileID: 1781020334}
+  damageFill: {fileID: 1420465473}
 --- !u!1 &1885949788
 GameObject:
   m_ObjectHideFlags: 0
@@ -20961,12 +21697,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1885949791
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21252,12 +21992,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1894987461
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21371,12 +22115,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1905507374
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21490,12 +22238,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1914539492
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21813,12 +22565,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1946788113
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21932,12 +22688,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1947948771
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22305,12 +23065,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1968372757
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22424,12 +23188,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1972720268
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22543,12 +23311,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1981051676
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22662,12 +23434,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1993054582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22781,12 +23557,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &1993373951
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22900,12 +23680,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &2007278171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23019,12 +23803,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &2017553653
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23138,12 +23926,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &2030519116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23257,12 +24049,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &2031495281
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23376,12 +24172,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &2037709069
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23531,12 +24331,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &2052786633
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23627,7 +24431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 1882060220}
-  healthCanvas: {fileID: 969034282}
+  healthUI: {fileID: 1882060218}
 --- !u!4 &2064244935
 Transform:
   m_ObjectHideFlags: 0
@@ -23695,12 +24499,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &2066692956
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24044,12 +24852,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &2085002006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24163,12 +24975,16 @@ MonoBehaviour:
   attackRange: 0
   AOE: 0
   adjacencyList: []
+  adjacencyListAIAttack: []
   visited: 0
   parent: {fileID: 0}
   distance: 0
   f: 0
   g: 0
   h: 0
+  targetList: []
+  bestTarget: {fileID: 0}
+  score: 0
 --- !u!65 &2114251403
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24408,7 +25224,7 @@ PrefabInstance:
     - target: {fileID: 4337116776982583734, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 4337116776982583734, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
         type: 3}
@@ -24450,6 +25266,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4337116776982583735, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
+        type: 3}
+      propertyPath: Weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: c8ab3c034e91c2c47992ceeba29364f0,
+        type: 2}
     - target: {fileID: 4337116777240164340, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
         type: 3}
       propertyPath: cam
@@ -24484,6 +25306,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6507548722777130128, guid: be05d17129e1d9a42a0e02e9287dce29,
+        type: 3}
+      propertyPath: Armor
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c15572459348674b8071f127363fd2d,
+        type: 2}
+    - target: {fileID: 6507548722777130128, guid: be05d17129e1d9a42a0e02e9287dce29,
+        type: 3}
+      propertyPath: Weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: c8ab3c034e91c2c47992ceeba29364f0,
+        type: 2}
     - target: {fileID: 6507548722777130135, guid: be05d17129e1d9a42a0e02e9287dce29,
         type: 3}
       propertyPath: m_LocalPosition.x

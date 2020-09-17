@@ -25,6 +25,11 @@ public abstract class UnitActions : MonoBehaviour
     public abstract void Execute();
     public abstract void Done();
 
+    protected virtual void Start()
+    {
+        Init();
+    }
+
     protected virtual void Init()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
@@ -55,6 +60,18 @@ public abstract class UnitActions : MonoBehaviour
         return tile;
     }
 
+    public Unit GetUnitOnTile(Tile target)
+    {
+        RaycastHit hit;
+        Unit unit = null;
+        // Cast ray down from targeted object to find tile that it is on
+        if (Physics.Raycast(target.transform.position, Vector3.up, out hit, 1))
+        {
+            unit = hit.collider.GetComponent<Unit>();
+        }
+        return unit;
+    }
+
     public void ComputeAdjacencyLists(float jumpHeight, Tile target, bool tilesWithObjectOnTop, bool ability)
     {
         // Move this into here if tiles are going to be added or removed during gameplay
@@ -66,6 +83,16 @@ public abstract class UnitActions : MonoBehaviour
             Tile t = tile.GetComponent<Tile>();
 
             t.FindNeighbors(jumpHeight, target, tilesWithObjectOnTop, ability);
+        }
+    }
+    public void ComputeAdjacencyListsAI(float jumpHeight, float weaponVerticality)
+    {
+        foreach(GameObject tile in tiles)
+        {
+            // Get tile script from the game object
+            Tile t = tile.GetComponent<Tile>();
+
+            t.FindNeighborsAI(jumpHeight, weaponVerticality);
         }
     }
 

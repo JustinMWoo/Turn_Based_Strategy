@@ -175,16 +175,16 @@ public class TacticsChainLightning : TacticsAbility
 
         foreach (Tile tile in selectableTiles)
         {
-            tile.Reset(false);
+            tile.Reset(false, true);
         }
 
         foreach (Tile tile in potentialChainTiles)
         {
-            tile.Reset(false);
+            tile.Reset(false, true);
         }
         foreach (Tile tile in chainTiles)
         {
-            tile.Reset(false);
+            tile.Reset(false, true);
         }
 
         selectableTiles.Clear();

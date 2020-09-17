@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 // warrior class base stats and info
 [CreateAssetMenu(menuName = "Class/Warrior")]
