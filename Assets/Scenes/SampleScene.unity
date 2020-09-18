@@ -25270,7 +25270,13 @@ PrefabInstance:
         type: 3}
       propertyPath: Weapon
       value: 
-      objectReference: {fileID: 11400000, guid: c8ab3c034e91c2c47992ceeba29364f0,
+      objectReference: {fileID: 11400000, guid: ae30ecfb9a80e4447934bdc98a89fc2e,
+        type: 2}
+    - target: {fileID: 4337116776982583735, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
+        type: 3}
+      propertyPath: Armor
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c15572459348674b8071f127363fd2d,
         type: 2}
     - target: {fileID: 4337116777240164340, guid: 3c0126d2e14ba264aa6ed1f9dce4ad43,
         type: 3}
