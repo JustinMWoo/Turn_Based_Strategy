@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// For testing (showing tile scores)
+using TMPro;
+
 // TODO: inheriting from tactics move is weird so eventually change and reorganize file system so it makes more sense
 public class TacticsAI : TacticsMove
 {
+    // Maybe scale with the damage of weapon
+    const float DISTANCE_SCORE_MULTIPLIER = 10.0f;
+
     List<Tile> moveableTiles = new List<Tile>();
     // Tiles that you unit can attack from and reach a target
     List<Tile> tilesWithTarget = new List<Tile>();
@@ -31,6 +37,12 @@ public class TacticsAI : TacticsMove
     {
         base.Done();
         moveableTiles.Clear();
+        foreach (Tile tile in tilesWithTarget)
+        {
+            tile.Reset(false, true);
+            tile.GetComponentInChildren<TextMeshProUGUI>().text = "0";
+        }
+
         tilesWithTarget.Clear();
         bestTile = null;
         target = null;
@@ -162,7 +174,7 @@ public class TacticsAI : TacticsMove
 
         foreach (Tile tile in moveableTiles)
         {
-            tile.Reset(false, true);
+            tile.Reset(false, false);
         }
 
         List<Tile> curAttackableTiles = new List<Tile>();
@@ -183,6 +195,8 @@ public class TacticsAI : TacticsMove
 
                     curAttackableTiles.Add(t);
 
+                    //Debug.Log("List contains " + t + t.transform.parent + moveableTiles.Contains(t));
+
                     // If there is overlap between the lists then the AI can attack move to that tile and attack the unit
                     if (moveableTiles.Contains(t))
                     {
@@ -190,6 +204,7 @@ public class TacticsAI : TacticsMove
                         {
                             tilesWithTarget.Add(t);
                         }
+
                         t.targetList.Add(GetUnitOnTile(playerUnitTile));
                     }
 
@@ -197,7 +212,7 @@ public class TacticsAI : TacticsMove
 
                     if (t.distance < unit.Weapon.WeaponRange)
                     {
-                        foreach (Tile tile in t.adjacencyList)
+                        foreach (Tile tile in t.adjacencyListAIAttack)
                         {
                             if (!tile.visited)
                             {
@@ -229,14 +244,18 @@ public class TacticsAI : TacticsMove
 
     private Tile CalculateTileScores()
     {
+        //Debug.Log("Num moveable tiles: " + moveableTiles.Count);
+        //Debug.Log("Num tiles with targets: " + tilesWithTarget.Count);
         Tile bestTile = null;
-        int bestTileScore = int.MinValue;
+        float bestTileScore = float.MinValue;
 
+        // For distance calculation, get the tiles with the min and max distance to each fo the enemies
+        // Then normalize along this to scale the score value assigned for distance (max = 1, min = 0)
+        float minDistance = float.MaxValue;
+        float maxDistance = float.MinValue;
         foreach (Tile tile in tilesWithTarget)
         {
-            int bestScore = int.MinValue;
-            Unit bestTarget;
-            int score;
+            float score;
 
             // Calculate a score for each target using dealable damage, dodge and if the attack will kill
             foreach (Unit target in tile.targetList)
@@ -249,88 +268,58 @@ public class TacticsAI : TacticsMove
                 {
                     // Adding weapon damage to have a flat value
                     // Ex without, unit at 1 hp would have very low chance of getting targeted
-                    score += damage * 2 + unit.Weapon.Damage * 2;
+                    score += target.currentHP * 2 + unit.Weapon.Damage * 2;
                 }
                 else
                 {
-                    score += damage;
+                    score += damage * 2;
                 }
 
-                score -= (int)DamageCalculator.Current.CalculateDodge(target) / 3;
+                score -= DamageCalculator.Current.CalculateDodge(target) / 3;
 
-                 if (score > bestScore)
+                if (score > tile.score)
                 {
-                    tile.score = bestScore = score;
-                    tile.bestTarget = bestTarget = target;
+                    tile.score = score;
+                    tile.bestTarget = target;
                 }
-                //Debug.Log("Tile " + tile.gameObject +" has score: " + score);
+            }
+            //Debug.Log("Tile " + tile.gameObject + " has score: " + tile.score);
+
+            // Calculate distance scores
+            foreach (Unit playerUnit in party)
+            {
+                tile.distanceToPlayerUnits += Vector3.Distance(playerUnit.transform.position, tile.transform.position);
             }
 
-            //Debug.Log("Next score: " + bestScore + " Best tile score: " + bestTileScore);
-
-            if (bestScore > bestTileScore)
+            if (tile.distanceToPlayerUnits > maxDistance)
             {
-                //Debug.Log("Best tile: " + tile.gameObject);
-                bestTileScore = bestScore;
-                bestTile = tile;
+                maxDistance = tile.distanceToPlayerUnits;
+            }
+            if (tile.distanceToPlayerUnits < minDistance)
+            {
+                minDistance = tile.distanceToPlayerUnits;
             }
         }
 
-        //// Calculate distance scores
-        //foreach (Unit playerUnit in party)
-        //{
-        //    if (playerUnit.gameObject.activeSelf)
-        //    {
-        //        Queue<Tile> queue = new Queue<Tile>();
+        // Iterate through all the tiles with targets again to normalize and add distance score
+        foreach (Tile tile in tilesWithTarget)
+        {
+            float normalizedDist = (tile.distanceToPlayerUnits - minDistance) / (maxDistance - minDistance);
+            tile.score += normalizedDist * DISTANCE_SCORE_MULTIPLIER;
 
-        //        ComputeAdjacencyListsAI(playerUnit.unitClass.JumpHeight.Value, unit.Weapon.WeaponVerticality);
+            if (tile.score > bestTileScore)
+            {
+                //Debug.Log("Best tile: " + tile.gameObject);
+                bestTileScore = tile.score;
+                bestTile = tile;
+            }
 
-        //        Tile playerUnitTile = GetTargetTile(playerUnit.gameObject);
+            // Debug to display scores of tiles
+            tile.GetComponentInChildren<TextMeshProUGUI>().text = System.Math.Round(tile.score, 2).ToString();
+        }
+        //Debug.Log("The best tile has a score of: " + bestTile.score);
 
-        //        queue.Enqueue(playerUnitTile);
-        //        playerUnitTile.visited = true;
-
-        //        while (queue.Count > 0)
-        //        {
-        //            Tile t = queue.Dequeue();
-
-        //            // Add the weapon range and movement to get a general range of the unit
-        //            if (t.distance < playerUnit.Weapon.WeaponRange + playerUnit.unitClass.Movement.Value)
-        //            {
-        //                // This player unit can attack* this tile
-        //                // (May not be able to attack since it is the general range of the unit and does not consider weapon verticality)
-
-        //                // RIGHT NOW THIS MEANS THAT IF THE UNIT CAN BE ATTACKED AT THAT LOCATION SCORE WILL INCREASE FOR TILE
-        //                // BUT THIS MEANS THAT IF ON A TILE THAT CANNOT BE ATTACKED THEN LOWER SCORE
-        //                if (tilesWithTarget.Contains(t))
-        //                {
-        //                    t.score += t.distance;
-        //                }
-
-        //                foreach (Tile adjTile in t.adjacencyList)
-        //                {
-        //                    if (!adjTile.visited)
-        //                    {
-        //                        adjTile.parent = t;
-        //                        adjTile.distance = t.distance + 1;
-        //                        adjTile.visited = true;
-
-        //                        queue.Enqueue(adjTile);
-        //                    }
-        //                }
-        //            }
-        //        }
-
-        //        // Reset all tiles
-        //        foreach (Tile tile in curAttackableTiles)
-        //        {
-        //            tile.Reset(false, false);
-        //        }
-        //    }
-
-
-
-            return bestTile;
+        return bestTile;
     }
 
     void FindNearestTarget()

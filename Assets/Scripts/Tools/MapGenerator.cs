@@ -9,7 +9,7 @@ public class MapGenerator : EditorWindow
     float x = 0;
     float z = 0;
 
-    [MenuItem("Tools/Generate Map")]
+    [MenuItem("Tools/Generate Map (DO NOT USE)")]
     public static void GenerateMapScript()
     {
         MapGenerator window = (MapGenerator)GetWindow(typeof(MapGenerator));

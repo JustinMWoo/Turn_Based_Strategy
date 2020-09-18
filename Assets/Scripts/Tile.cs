@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+    bool debugTile;
+
     #region Variables
     public bool walkable = true;
     public bool current = false;
@@ -29,8 +31,9 @@ public class Tile : MonoBehaviour
 
     // AI variables
     public List<Unit> targetList = new List<Unit>();
-    public Unit bestTarget;
-    public int score;
+    public Unit bestTarget = null;
+    public float score = float.MinValue;
+    public float distanceToPlayerUnits = 0;
     #endregion
 
     // Start is called before the first frame update
@@ -41,8 +44,10 @@ public class Tile : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-         if (target)
+    {
+        //if (!debugTile)
+        // {
+        if (target)
         {
             GetComponent<Renderer>().material.color = Color.green;
         }
@@ -50,7 +55,7 @@ public class Tile : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.yellow;
         }
-         else if (current)
+        else if (current)
         {
             GetComponent<Renderer>().material.color = Color.magenta;
         }
@@ -66,14 +71,15 @@ public class Tile : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.white;
         }
+        //}
     }
 
     public void Reset(bool ability, bool clearTargets)
     {
         adjacencyList.Clear();
-        
+
         target = false;
-        
+
         if (!ability)
         {
             current = false;
@@ -92,9 +98,11 @@ public class Tile : MonoBehaviour
         {
             targetList.Clear();
             bestTarget = null;
+            adjacencyListAIAttack.Clear();
         }
-        
-        score = 0;
+
+        distanceToPlayerUnits = 0;
+        score = float.MinValue;
     }
 
     public void FindNeighbors(float jumpHeight, Tile target, bool tilesWithObjectOnTop, bool ability)
@@ -115,7 +123,7 @@ public class Tile : MonoBehaviour
 
         CheckTile(Vector3.forward, jumpHeight, null, false, false);
         CheckTile(-Vector3.forward, jumpHeight, null, false, false);
-        CheckTile(Vector3.right, jumpHeight,  null, false, false);
+        CheckTile(Vector3.right, jumpHeight, null, false, false);
         CheckTile(-Vector3.right, jumpHeight, null, false, false);
 
         CheckTile(Vector3.forward, weaponVerticality, null, false, true);
@@ -124,10 +132,10 @@ public class Tile : MonoBehaviour
         CheckTile(-Vector3.right, weaponVerticality, null, false, true);
     }
 
-    public void CheckTile(Vector3 direction, float jumpHeight, Tile target, bool tilesWithObjectOnTop, bool AIAttack)
+    public void CheckTile(Vector3 direction, float verticality, Tile target, bool tilesWithObjectOnTop, bool AIAttack)
     {
         // Check at approx half the size of one tile
-        Vector3 halfExtents = new Vector3(0.25f, jumpHeight, 0.25f);
+        Vector3 halfExtents = new Vector3(0.25f, verticality, 0.25f);
         Collider[] colliders = Physics.OverlapBox(transform.position + direction, halfExtents);
 
         foreach (Collider item in colliders)
@@ -152,5 +160,11 @@ public class Tile : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void DebugTile()
+    {
+        debugTile = true;
+        GetComponent<Renderer>().material.color = new Color(0, 0, 0);
     }
 }
