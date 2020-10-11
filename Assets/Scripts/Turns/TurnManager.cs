@@ -109,7 +109,7 @@ public class TurnManager : MonoBehaviour
             turnData.unitsLeft.Remove(unit.unitData.id);
             currentUnit.ReduceCooldowns();
         }
-        //Debug.Log(turnData.unitsLeft.Count);
+        //Debug.Log(turnTeam.Peek());
 
         if (turnTeam.Count > 0) // Start the next units turn
         {
@@ -162,6 +162,10 @@ public class TurnManager : MonoBehaviour
     {
         // Remove the unit from its team
         units[unit.tag].Remove(unit);
+
+        // Remove unit from turn team (i.e. remove from teams turn order)
+        Queue<Unit> turnTeamUpdated = new Queue<Unit>(turnTeam.Where(x => x != unit));
+        turnTeam = turnTeamUpdated;
 
         // If there are no more units on the team
         if (!units[unit.tag].Any())

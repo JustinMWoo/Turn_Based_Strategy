@@ -110,6 +110,7 @@ public class TacticsFireball : TacticsAbility
         }
         Done();
         unit.abilityCooldowns[id] = cooldownMax;
+
         TurnManager.EndAction(true, true);
     }
     protected void RemoveSelectableAndAOETiles()
