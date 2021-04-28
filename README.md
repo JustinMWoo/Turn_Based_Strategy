@@ -15,6 +15,9 @@ Movement range of units are determined through BFS and are displayed in red on t
 <img src="Readme/movement.gif" width = "600">
 Note: First unit is a mage and second unit is a thief.
 
+Units also have the ability to interact with certain objects as part of their actions. Ex. A chest can be interacted with once to obtain the contained item, but it will not allow the unit to perform any additional actions.  
+<img src="Readme/interactable.gif" width = "600">  
+
 ### Combat
 Units can attack in a range determined by the weapon they have equipped. Upon engaging in combat camera controls are disabled and a combat camera is engaged. Health bars can be seen when mousing over a unit and during combat.
 <img src="Readme/combat.gif" width = "600">
