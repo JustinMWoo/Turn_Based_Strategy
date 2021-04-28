@@ -33,7 +33,7 @@ Damage dealt is also scaled by the side the unit is hit from. Damage from the fr
 
 ### Abilities
 Classes have abilities that can be accessed from the ability menu. Using an ability ends the unit's turn, performs the specified action and puts the ability on cooldown for a set number of turns.  
-<img src="Readme/abilities.gif" width = "450"><img src="Readme/abilities_cooldown.gif" width = "450">  
+<img src="Readme/abilities.gif" width = "600"><img src="Readme/abilities_cooldown.gif" width = "450">  
 
 ### Other
 Units on the team and actions of the currently selected unit can be cycled through using the buttons on screen.
@@ -54,6 +54,6 @@ Scores assigned to each tile are displayed for the attacking AI unit (the right 
 Scores assigned to each tile are displayed for the attacking AI unit (the red and black pill at the top of the image).The optimal tile for the current AI settings is shown in green. In this example, the blue pill in the bottom right of the image has significantly better armor than the pill on the left. Therefore, the attacker has chosen to target the pill on the left. Since the weapon used by the attacker has a range of 3 tiles, all tiles that the unit can move to and attack an enemy unit are given a score. The tile the AI has chosen causes an attack to the front of the enemy (the black side of the pill) and will therefore do significantly reduced damage, however this tile was chosen due to the distance from the other enemy unit.
 
 ## Save/Load
-The state of the game is able to be saved using the pause menu preserving unit positions, ability cooldowns, unit stats including health and damage received and which units have used their turn. 
+The state of the game is able to be saved using the pause menu preserving unit positions, ability cooldowns, unit stats including health and damage received and which units have used their turn.  
 <img src="Readme/save_load.gif" width = "450">  
 Note: The player can not save on the opponent's turn
