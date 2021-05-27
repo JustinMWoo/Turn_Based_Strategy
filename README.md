@@ -53,7 +53,7 @@ Scores for distance from enemy units are determined by finding the maximum and m
 Scores assigned to each tile are displayed for the attacking AI unit (the right red and black pill). The optimal tile for the current AI settings is shown in green. The blue pill on the bottom right of the image has significantly better armor in this example. Thus, the attacker has chosen a tile from which it can attack the other enemy. Additionally, tiles on the sides of the enemy have greater scores assigned to them because of the damage reduction from attacking from the front (the black side of the pill). Finally, the AI has chosen the top location rather than the bottom in order to maximize distance from the other enemy.  
 
 <img src="Readme/AI_ranged.png" width = "450">  
-Ranged example explanation:   
+**Ranged example explanation:**  
 
 Scores assigned to each tile are displayed for the attacking AI unit (the red and black pill at the top of the image).The optimal tile for the current AI settings is shown in green. In this example, the blue pill in the bottom right of the image has significantly better armor than the pill on the left. Therefore, the attacker has chosen to target the pill on the left. Since the weapon used by the attacker has a range of 3 tiles, all tiles that the unit can move to and attack an enemy unit are given a score. The tile the AI has chosen causes an attack to the front of the enemy (the black side of the pill) and will therefore do significantly reduced damage, however this tile was chosen due to the distance from the other enemy unit.
 
