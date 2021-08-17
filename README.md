@@ -26,7 +26,7 @@ The player has full control over the camera through the use of the mouse or keyb
 <a name="movement"/>  
 
 ### Movement
-Movement range of units are determined through BFS and are displayed in red on the board when it is the unit's turn. A tile can then be selected to move to and the path to the tile is calculated using A*. The number of tiles the unit can move is primarily determined by the class of the unit (can be assigned in the unity inspector).
+Movement range of units are determined through BFS and are displayed in red on the board when it is the unit's turn. A tile can then be selected to move to and the path to the tile is calculated using A*. The number of tiles the unit can move is primarily determined by the class of the unit (can be assigned in the unity inspector). After moving, the player can choose the direction the unit faces.
 
 <img src="Readme/movement.gif" width = "600">
 Note: First unit is a mage and second unit is a thief.
