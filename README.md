@@ -42,7 +42,7 @@ Units can attack in a range determined by the weapon they have equipped. Upon en
 
 **Damage Calculation**  
 Several systems are in place for damage calculation. (Look at DamageCalculator.cs for full formulas for damage calculation)
-* Crit: Mutiplier is always 1.5x, gained from weapons/armor
+* Critical hits: Mutiplier is always 1.5x, critical strike chance is gained from weapons/armor
 * Dodge: Gained from armor and dex (has diminishing returns)
 * Defense: Gained from armor and str
 * Magic Defense: Gained from armor and int  
