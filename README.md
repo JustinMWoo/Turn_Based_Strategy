@@ -3,11 +3,27 @@
 ## Overview
 This repo contains a working prototype for a turn based strategy game in unity. 
 
+## Table of Contents  
+* [Controls](#controls)
+  * [Camera Controls](#camera)   
+  * [Movement](#movement)  
+  * [Combat](#combat)
+  * [Abilities](#abilities)
+  * [Other](#other)
+* [AI](#ai)
+* [Save/Load](#save-load)
+
+<a name="controls"/>  
+
 ## Controls
+
+<a name="camera"/>  
 
 ### Camera Controls
 The player has full control over the camera through the use of the mouse or keyboard.
 <img src="Readme/camera_controls.gif" width = "600">
+
+<a name="movement"/>  
 
 ### Movement
 Movement range of units are determined through BFS and are displayed in red on the board when it is the unit's turn. A tile can then be selected to move to and the path to the tile is calculated using A*. The number of tiles the unit can move is primarily determined by the class of the unit (can be assigned in the unity inspector).
@@ -17,6 +33,8 @@ Note: First unit is a mage and second unit is a thief.
 
 Units also have the ability to interact with certain objects as part of their actions. Ex. A chest can be interacted with once to obtain the contained item, but it will not allow the unit to perform any additional actions.  
 <img src="Readme/interactable.gif" width = "600">  
+
+<a name="combat"/>  
 
 ### Combat
 Units can attack in a range determined by the weapon they have equipped. Upon engaging in combat camera controls are disabled and a combat camera is engaged. Health bars can be seen when mousing over a unit and during combat.  
@@ -34,13 +52,19 @@ Additionally, damage from attacks can be either physical or magical and are redu
 
 Damage dealt is also scaled by the side the unit is hit from. Damage from the front of the defender is reduced by 50%, side 25% and back deals full damage.
 
+<a name="abilities"/>  
+
 ### Abilities
 Classes have abilities that can be accessed from the ability menu. Using an ability ends the unit's turn, performs the specified action and puts the ability on cooldown for a set number of turns.  
 <img src="Readme/abilities.gif" width = "600"><img src="Readme/abilities_cooldown.gif" width = "450">  
 
+<a name="other"/>  
+
 ### Other
 Units on the team and actions of the currently selected unit can be cycled through using the buttons on screen.
 <img src="Readme/other.gif" width = "600">
+
+<a name="AI"/>  
 
 ## AI
 AI of enemy units assigns a score to each tile it can currently move to. If units are in range of attack, only tiles in which an enemy can be attacked are given scores. If there are no units in range, then AI attempts to close the distance to the enemy.  
@@ -56,6 +80,8 @@ Scores assigned to each tile are displayed for the attacking AI unit (the right 
 
 **Ranged example explanation:**  
 Scores assigned to each tile are displayed for the attacking AI unit (the red and black pill at the top of the image).The optimal tile for the current AI settings is shown in green. In this example, the blue pill in the bottom right of the image has significantly better armor than the pill on the left. Therefore, the attacker has chosen to target the pill on the left. Since the weapon used by the attacker has a range of 3 tiles, all tiles that the unit can move to and attack an enemy unit are given a score. The tile the AI has chosen causes an attack to the front of the enemy (the black side of the pill) and will therefore do significantly reduced damage, however this tile was chosen due to the distance from the other enemy unit.
+
+<a name="save-load"/>  
 
 ## Save/Load
 The state of the game is able to be saved using the pause menu preserving unit positions, ability cooldowns, unit stats including health and damage received and which units have used their turn.  
