@@ -19,7 +19,7 @@ Units also have the ability to interact with certain objects as part of their ac
 <img src="Readme/interactable.gif" width = "600">  
 
 ### Combat
-Units can attack in a range determined by the weapon they have equipped. Upon engaging in combat camera controls are disabled and a combat camera is engaged. Health bars can be seen when mousing over a unit and during combat.
+Units can attack in a range determined by the weapon they have equipped. Upon engaging in combat camera controls are disabled and a combat camera is engaged. Health bars can be seen when mousing over a unit and during combat.  
 <img src="Readme/combat.gif" width = "600">
 
 **Damage Calculation**  
